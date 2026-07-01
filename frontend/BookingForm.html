@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Jungle Safari Booking Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: #f4f7f6; /* Light modern gray */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .modern-form {
+      background: #ffffff;
+      padding: 40px 50px;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      max-width: 550px;
+      margin: 60px auto;
+      border-top: 5px solid #2e7d32;
+    }
+    .modern-form h1 {
+      color: #333;
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 0.5px;
+    }
+    .modern-form label {
+      color: #555;
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .modern-form input, .modern-form select {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background: #fafafa;
+      transition: 0.3s;
+    }
+    .modern-form input:focus, .modern-form select:focus {
+      border-color: #2e7d32;
+      background: #fff;
+      box-shadow: 0 0 8px rgba(46, 125, 50, 0.1);
+      outline: none;
+    }
+    .persons-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .persons-row input {
+      margin-bottom: 0;
+    }
+    .persons-row button {
+      background: #2e7d32;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+    .persons-row button:hover { background: #1b5e20; }
+    .btn-action {
+      padding: 14px 20px;
+      border-radius: 6px;
+      font-weight: bold;
+      border: none;
+      width: 48%;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .btn-submit { background: #2e7d32; color: #fff; }
+    .btn-submit:hover { background: #1b5e20; }
+    .btn-reset { background: #f0f0f0; color: #333; }
+    .btn-reset:hover { background: #e0e0e0; }
+  </style>
+</head>
+<body>
+  
+  <div class="modern-form">
+    <h1>Confirm Your Safari</h1>
+    <form id="safariForm" novalidate action="./../backend/BookingForm.php" method="post">
+        
+      <label for="nationalPark">Select National Park *</label>
+      <select id="nationalPark" name="nationalPark" required>
+        <option value="" disabled selected>-- Please choose a park --</option>
+        <option value="Gir National Park">Gir National Park</option>
+        <option value="Corbett National Park">Corbett National Park</option>
+        <option value="Ranthambore National Park">Ranthambore National Park</option>
+        <option value="Kanha National Park">Kanha National Park</option>
+        <option value="Bandhavgarh National Park">Bandhavgarh National Park</option>
+      </select>
+
+      <div style="display:flex; gap:15px;">
+        <div style="flex:1;">
+          <label for="firstName">First Name *</label>
+          <input type="text" id="firstName" name="firstName" required placeholder="First name" />
+        </div>
+        <div style="flex:1;">
+          <label for="lastName">Last Name *</label>
+          <input type="text" id="lastName" name="lastName" required placeholder="Last name" />
+        </div>
+      </div>
+
+      <label for="contactNumber">Contact Number *</label>
+      <input type="tel" id="contactNumber" name="contactNumber" required pattern="[0-9]{10}" maxlength="10" placeholder="10-digit mobile number" />
+
+      <label for="email">Email *</label>
+      <input type="email" id="email" name="email" required placeholder="your@email.com" />
+
+      <label for="numPersons">Number of Persons *</label>
+      <div class="persons-row">
+        <button type="button" id="removePersonBtn">−</button>
+        <input type="number" id="numPersons" name="numPersons" min="1" value="1" required />
+        <button type="button" id="addPersonBtn">+</button>
+      </div>
+      <p style="font-size: 0.85rem; color: #666; margin-top: -10px; margin-bottom: 20px;">Rate: ₹1000 per person</p>
+
+      <label for="paymentMode">Payment Mode *</label>
+      <select id="paymentMode" name="paymentMode" required>
+        <option value="" disabled selected>-- Select Payment Mode --</option>
+        <option value="Cash on Hand">Cash on Hand</option>
+        <option value="UPI">UPI</option>
+        <option value="Credit Card">Credit Card</option>
+      </select>
+
+      <label for="totalAmount">Total Amount</label>
+      <input type="text" id="totalAmount" name="totalAmount" value="₹1000" readonly style="background:#eee; font-weight:bold; color:#2e7d32;" />
+
+      <div style="display:flex; justify-content:space-between; margin-top: 10px;">
+        <button type="submit" class="btn-action btn-submit">Proceed</button>
+        <button type="reset" class="btn-action btn-reset">Reset</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    (function(){
+      const RATE = 1000;
+      const form = document.getElementById('safariForm');
+      const numPersonsEl = document.getElementById('numPersons');
+      const totalAmountEl = document.getElementById('totalAmount');
+      const addBtn = document.getElementById('addPersonBtn');
+      const removeBtn = document.getElementById('removePersonBtn');
+
+      function formatINR(amount){ return '₹' + amount.toLocaleString('en-IN'); }
+
+      function updateTotal(){
+        let count = parseInt(numPersonsEl.value, 10);
+        if (isNaN(count) || count < 1) { count = 1; numPersonsEl.value = 1; }
+        const total = count * RATE;
+        totalAmountEl.value = formatINR(total);
+        removeBtn.disabled = count <= 1;
+      }
+
+      numPersonsEl.addEventListener('input', updateTotal);
+      addBtn.addEventListener('click', () => {
+        numPersonsEl.value = (parseInt(numPersonsEl.value, 10) || 0) + 1;
+        updateTotal();
+      });
+      removeBtn.addEventListener('click', () => {
+        let count = parseInt(numPersonsEl.value, 10);
+        if (count > 1) { numPersonsEl.value = count - 1; updateTotal(); }
+      });
+
+      form.addEventListener('submit', function(e){
+        if(!form.checkValidity()){
+          alert('Please fill all required fields correctly before booking.');
+          e.preventDefault();
+        }
+      });
+
+      form.addEventListener('reset', () => setTimeout(updateTotal, 0));
+      updateTotal();
+    })();
+  </script>
+</body>
+</html>

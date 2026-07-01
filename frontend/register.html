@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jungle Safari - Sign Up</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+    body {
+      margin: 0; padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url('loginpanel.jpg') center/cover no-repeat fixed;
+      height: 100vh;
+      display: flex; justify-content: center; align-items: center;
+      overflow: hidden;
+    }
+    .game-form-container {
+      background: rgba(15, 28, 21, 0.8);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.8), inset 0 0 20px rgba(212, 175, 55, 0.1);
+      width: 350px;
+      text-align: center;
+      color: #fff;
+      animation: fadeIn 1s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .game-form-container h2 {
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+      color: #d4af37;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    }
+    .input-group { margin-bottom: 15px; position: relative; }
+    .input-group input, .input-group select {
+      width: 100%;
+      padding: 10px;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid #444;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+      box-sizing: border-box;
+      transition: all 0.3s;
+    }
+    .input-group input:focus, .input-group select:focus {
+      border-color: #d4af37;
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    }
+    .input-group select option { background: #0f1c15; color: #fff; }
+    button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(45deg, #1e3a2f, #2e7d32);
+      border: 1px solid #d4af37;
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: 0.3s;
+      box-shadow: 0 0 15px rgba(46, 125, 50, 0.5);
+    }
+    button:hover {
+      background: linear-gradient(45deg, #2e7d32, #1e3a2f);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+      transform: scale(1.05);
+    }
+    p { margin-top: 15px; font-size: 0.9rem; color: #ccc; }
+    a { color: #d4af37; text-decoration: none; font-weight: 600; transition: 0.3s; }
+    a:hover { text-shadow: 0 0 8px rgba(212, 175, 55, 0.8); }
+  </style>
+</head>
+<body>
+  <div class="game-form-container">
+    <h2>Sign Up</h2>
+    <form id="signupForm" action="../backend/register.php" method="POST">
+      <div class="input-group">
+        <input type="text" name="username" id="username" placeholder="Username" required />
+      </div>
+      <div class="input-group">
+        <input type="email" name="email" id="email" placeholder="Email Address" required />
+      </div>
+      <div class="input-group">
+        <input type="password" name="password" id="password" placeholder="Password" required />
+      </div>
+      <div class="input-group">
+        <select name="role" id="role" required>
+          <option value="user">Explorer (User)</option>
+          <option value="admin">Ranger (Admin)</option>
+        </select>
+      </div>
+      <button type="submit">Join Safari</button>
+    </form>
+    <p>Already joined? <a href="login.html">Login</a></p>
+  </div>
+</body>
+</html>

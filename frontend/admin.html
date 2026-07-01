@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Jungle Safari</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+        }
+
+        #sidebar {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            min-height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            padding: 20px;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        #sidebar.active {
+            margin-left: -250px;
+        }
+
+        .sidebar-header {
+            padding-bottom: 20px;
+            border-bottom: 1px solid #34495e;
+            text-align: center;
+        }
+
+        .sidebar-header h3 {
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        #sidebar ul.components {
+            padding: 20px 0;
+        }
+
+        #sidebar ul li a {
+            padding: 15px 10px;
+            font-size: 1.1em;
+            display: block;
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: all 0.3s;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+
+        #sidebar ul li a:hover, #sidebar ul li a.active-link {
+            color: #fff;
+            background: #34495e;
+        }
+
+        #content {
+            width: calc(100% - 250px);
+            padding: 20px;
+            min-height: 100vh;
+            transition: all 0.3s;
+            margin-left: 250px;
+        }
+
+        #content.active {
+            width: 100%;
+            margin-left: 0;
+        }
+
+        #sidebarCollapse {
+            background-color: #2980b9;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            background-color: #34495e;
+            color: #fff;
+            font-weight: bold;
+            border-bottom: none;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            padding: 15px;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #f9f9f9;
+        }
+        
+        .table img {
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .modal-header {
+            background-color: #2980b9;
+            color: #fff;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .btn-primary {
+            background-color: #2980b9;
+            border-color: #2980b9;
+        }
+
+        .btn-success {
+            background-color: #27ae60;
+            border-color: #27ae60;
+        }
+
+        .btn-danger {
+            background-color: #c0392b;
+            border-color: #c0392b;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            #sidebar {
+                margin-left: -250px;
+            }
+            #sidebar.active {
+                margin-left: 0;
+            }
+            #content {
+                width: 100%;
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper d-flex">
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3><i class="fas fa-crown"></i> Admin Panel</h3>
+            </div>
+            <ul class="list-unstyled components">
+                <li><a href="#" data-section="dashboard" class="active-link"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#" data-section="bookings"><i class="fas fa-book"></i> Bookings</a></li>
+                <li><a href="#" data-section="safaris"><i class="fas fa-car"></i> Safaris</a></li>
+                <li><a href="#" data-section="users"><i class="fas fa-users"></i> Users</a></li>
+                <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </nav>
+
+        <!-- Page Content -->
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4 rounded-3 shadow-sm">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info me-3">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <span class="navbar-brand mb-0 h1">Jungle Safari Management System</span>
+                </div>
+            </nav>
+
+            <!-- Dashboard Section -->
+            <div id="dashboard" class="content-section">
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card text-white bg-primary">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-ticket-alt fa-3x me-3"></i>
+                                    <div>
+                                        <h5 class="card-title">Total Bookings</h5>
+                                        <h1 class="card-text" id="totalBookings">0</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card text-white bg-success">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-paw fa-3x me-3"></i>
+                                    <div>
+                                        <h5 class="card-title">Total Safaris</h5>
+                                        <h1 class="card-text" id="totalSafaris">0</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card text-white bg-warning">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-users fa-3x me-3"></i>
+                                    <div>
+                                        <h5 class="card-title">Total Users</h5>
+                                        <h1 class="card-text" id="totalUsers">0</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Activity Table (New Addition) -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                Recent Activity
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Time</th>
+                                            <th>Activity</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Just Now</td>
+                                            <td>Booking #5 for Ranthambore</td>
+                                            <td><span class="badge bg-success">Confirmed</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>10 mins ago</td>
+                                            <td>Booking #4 for Corbett</td>
+                                            <td><span class="badge bg-success">Confirmed</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>1 hour ago</td>
+                                            <td>New User Tirth Registered</td>
+                                            <td><span class="badge bg-primary">New</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bookings Section -->
+            <div id="bookings" class="content-section" style="display: none;">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h4 class="mb-0">Manage Bookings</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>User Details</th>
+                                        <th>Safari Package</th>
+                                        <th>Price</th>
+                                        <th>Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bookingsTableBody">
+                                    <!-- Data will be populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Safaris Section -->
+            <div id="safaris" class="content-section" style="display: none;">
+                <div class="card shadow-sm">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h4 class="mb-0">Manage Safari Packages</h4>
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addSafariModal">
+                            <i class="fas fa-plus-circle"></i> Add New Safari
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>Price</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="safarisTableBody">
+                                    <!-- Data will be populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Users Section -->
+            <div id="users" class="content-section" style="display: none;">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h4 class="mb-0">Registered Users</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Role</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="usersTableBody">
+                                    <!-- Data will be populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal for Adding Safari -->
+            <div class="modal fade" id="addSafariModal" tabindex="-1" aria-labelledby="addSafariModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addSafariModalLabel">Add New Safari</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form id="safariForm">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="safariName" class="form-label">Safari Name</label>
+                                    <input type="text" class="form-control" id="safariName" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="safariPrice" class="form-label">Price (₹)</label>
+                                    <input type="number" class="form-control" id="safariPrice" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="safariDescription" class="form-label">Description</label>
+                                    <textarea class="form-control" id="safariDescription" rows="3" required></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="safariImage" class="form-label">Image URL (Optional)</label>
+                                    <input type="text" class="form-control" id="safariImage" placeholder="https://example.com/image.jpg">
+                                    <small class="text-muted">Leave empty for default image</small>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save Safari</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <script>
+        // --- UPDATED MOCK DATA ---
+        
+        // 1. UPDATED SAFARIS (Only 3 as requested)
+        let safarisData = [
+            { id: 101, name: "Gir National Park", description: "Home of the majestic Asiatic Lions in Gujarat.", image: "https://images.unsplash.com/photo-1577114995803-b8b0a7ea2b5a?w=100&h=100&fit=crop", price: 2500 },
+            { id: 102, name: "Ranthambore National Park", description: "One of the best places in India to see Bengal Tigers.", image: "https://images.unsplash.com/photo-1549366021-9f761d450615?w=100&h=100&fit=crop", price: 3000 },
+            { id: 103, name: "Corbett National Park", description: "India's oldest national park, famous for tigers and elephants.", image: "https://images.unsplash.com/photo-1595183424151-54c7d5c76576?w=100&h=100&fit=crop", price: 3500 }
+        ];
+
+        // 2. UPDATED BOOKINGS (From your list)
+        let bookingsData = [
+            { id: 1, user_name: "Tirth Vishal kumar Gandhi", email: "nilamgandhi2550@gmail.com", phone: "8140396170", safari_name: "Corbett National Park", booking_date: "25/11/2025", price: "₹1000", seats: 1 },
+            { id: 2, user_name: "Tirth Vishal kumar Gandhi", email: "nilamgandhi2550@gmail.com", phone: "8140396170", safari_name: "Corbett National Park", booking_date: "25/11/2025", price: "₹1000", seats: 1 },
+            { id: 3, user_name: "Tirth Vishal kumar Gandhi", email: "nilamgandhi2550@gmail.com", phone: "8140396170", safari_name: "Corbett National Park", booking_date: "25/11/2025", price: "₹1000", seats: 1 },
+            { id: 4, user_name: "hem vekal kumar shah", email: "hem123@gmail.com", phone: "1236547809", safari_name: "Corbett National Park", booking_date: "25/11/2025", price: "₹4000", seats: 4 },
+            { id: 5, user_name: "ved raj shah", email: "vved123@gmail.com", phone: "1236547809", safari_name: "Ranthambore National Park", booking_date: "25/11/2025", price: "₹3000", seats: 3 }
+        ];
+
+        // 3. GENERATED USERS (Extracted unique users from your list)
+        let usersData = [
+            { id: 1001, name: "Tirth Vishal kumar Gandhi", email: "nilamgandhi2550@gmail.com", phone: "8140396170", role: "User" },
+            { id: 1002, name: "hem vekal kumar shah", email: "hem123@gmail.com", phone: "1236547809", role: "User" },
+            { id: 1003, name: "ved raj shah", email: "vved123@gmail.com", phone: "1236547809", role: "User" }
+        ];
+
+        let stats = {
+            bookings: bookingsData.length,
+            safaris: safarisData.length,
+            users: usersData.length
+        };
+
+        $(document).ready(function () {
+            // Sidebar Toggle
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $('#content').toggleClass('active');
+            });
+
+            // Navigation Handling
+            $('ul.components li a').on('click', function (e) {
+                e.preventDefault();
+                $('ul.components li a').removeClass('active-link');
+                $(this).addClass('active-link');
+                const section = $(this).data('section');
+                if (section) {
+                    $('.content-section').hide();
+                    $('#' + section).fadeIn();
+                }
+            });
+
+            // Initial Load
+            loadDashboard();
+            loadBookings();
+            loadSafaris();
+            loadUsers(); // New function for Users
+
+            // --- FUNCTION DEFINITIONS ---
+
+            function loadDashboard() {
+                animateValue("totalBookings", 0, stats.bookings, 1000);
+                animateValue("totalSafaris", 0, stats.safaris, 1000);
+                animateValue("totalUsers", 0, stats.users, 1000);
+            }
+
+            function loadBookings() {
+                let html = '';
+                bookingsData.forEach(booking => {
+                    html += `
+                        <tr id="booking-${booking.id}">
+                            <td>#${booking.id}</td>
+                            <td>
+                                <strong>${booking.user_name}</strong><br>
+                                <small class="text-muted"><i class="fas fa-envelope"></i> ${booking.email}</small><br>
+                                <small class="text-muted"><i class="fas fa-phone"></i> ${booking.phone}</small>
+                            </td>
+                            <td>${booking.safari_name} <span class="badge bg-info text-dark">${booking.seats} Seats</span></td>
+                            <td>${booking.price}</td>
+                            <td>${booking.booking_date}</td>
+                            <td>
+                                <button class="btn btn-danger btn-sm" onclick="deleteBooking(${booking.id})"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    `;
+                });
+                $('#bookingsTableBody').html(html);
+            }
+
+            function loadUsers() {
+                let html = '';
+                usersData.forEach(user => {
+                    html += `
+                        <tr id="user-${user.id}">
+                            <td>${user.id}</td>
+                            <td>${user.name}</td>
+                            <td>${user.email}</td>
+                            <td>${user.phone}</td>
+                            <td>${user.role}</td>
+                            <td>
+                                <button class="btn btn-danger btn-sm" onclick="deleteUser(${user.id})"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    `;
+                });
+                $('#usersTableBody').html(html);
+            }
+
+            function loadSafaris() {
+                let html = '';
+                safarisData.forEach(safari => {
+                    html += `
+                        <tr id="safari-${safari.id}">
+                            <td>${safari.id}</td>
+                            <td><img src="${safari.image}" alt="${safari.name}" width="60" height="60"></td>
+                            <td><strong>${safari.name}</strong></td>
+                            <td style="max-width: 300px;">${safari.description}</td>
+                            <td>₹${safari.price}</td>
+                            <td>
+                                <button class="btn btn-danger btn-sm" onclick="deleteSafari(${safari.id})"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    `;
+                });
+                $('#safarisTableBody').html(html);
+                stats.safaris = safarisData.length;
+                $('#totalSafaris').text(stats.safaris);
+            }
+
+            // Handle Add Safari Form
+            $('#safariForm').on('submit', function(e) {
+                e.preventDefault();
+                const name = $('#safariName').val();
+                const desc = $('#safariDescription').val();
+                const price = $('#safariPrice').val();
+                let img = $('#safariImage').val();
+                if(!img) img = "https://images.unsplash.com/photo-1500964757637-c85e8a162699?w=100&h=100&fit=crop";
+
+                const newSafari = {
+                    id: Math.floor(Math.random() * 1000) + 200,
+                    name: name,
+                    description: desc,
+                    image: img,
+                    price: price
+                };
+                safarisData.push(newSafari);
+                $('#addSafariModal').modal('hide');
+                $('#safariForm')[0].reset();
+                loadSafaris();
+                alert("Safari Added Successfully!");
+            });
+        });
+
+        // Global Delete Functions
+        window.deleteBooking = function(id) {
+            if (confirm('Are you sure?')) {
+                bookingsData = bookingsData.filter(b => b.id !== id);
+                $(`#booking-${id}`).fadeOut(300, function() { $(this).remove(); });
+                stats.bookings--;
+                $('#totalBookings').text(stats.bookings);
+            }
+        };
+
+        window.deleteSafari = function(id) {
+            if (confirm('Are you sure?')) {
+                safarisData = safarisData.filter(s => s.id !== id);
+                $(`#safari-${id}`).fadeOut(300, function() { $(this).remove(); });
+                stats.safaris = safarisData.length;
+                $('#totalSafaris').text(stats.safaris);
+            }
+        };
+
+        window.deleteUser = function(id) {
+            if (confirm('Are you sure?')) {
+                usersData = usersData.filter(u => u.id !== id);
+                $(`#user-${id}`).fadeOut(300, function() { $(this).remove(); });
+                stats.users--;
+                $('#totalUsers').text(stats.users);
+            }
+        };
+
+        function animateValue(id, start, end, duration) {
+            if (start === end) { document.getElementById(id).innerHTML = end; return; }
+            var range = end - start;
+            var current = start;
+            var increment = end > start? 1 : -1;
+            var stepTime = Math.abs(Math.floor(duration / range));
+            var obj = document.getElementById(id);
+            var timer = setInterval(function() {
+                current += increment;
+                obj.innerHTML = current;
+                if (current == end) { clearInterval(timer); }
+            }, stepTime);
+        }
+    </script>
+</body>
+</html>

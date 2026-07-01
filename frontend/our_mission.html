@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Mission | WildRoaming Safaris</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'jungle-dark': '#0f1f16',
+                        'jungle-green': '#1a3c2b',
+                        'jungle-accent': '#d4a373', // Earthy beige/orange
+                        'leaf-light': '#e9edc9',
+                        'earth-brown': '#4a3b32',
+                    },
+                    fontFamily: {
+                        serif: ['"DM Serif Display"', 'serif'],
+                        sans: ['"Quicksand"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f1f16;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1a3c2b;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d4a373;
+        }
+
+        /* Parallax Effect classes */
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Fade In Animation */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, visibility;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+        
+        /* Custom list bullet for mission points */
+        .mission-list li::before {
+            content: "🌿";
+            margin-right: 10px;
+            color: #d4a373;
+        }
+    </style>
+</head>
+<body class="bg-stone-50 font-sans text-stone-800 overflow-x-hidden">
+
+    <!-- Navigation (Consistent with About Us) -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-jungle-dark/90 backdrop-blur-sm text-white py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i data-lucide="compass" class="h-8 w-8 text-jungle-accent"></i>
+                <span class="text-2xl font-serif tracking-wider">WildRoaming</span>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="home.html" class="hover:text-jungle-accent transition-colors">Home</a>
+                <a href="about_us.html" class="hover:text-jungle-accent transition-colors">About Us</a>
+                <a href="our_mission.html" class="text-jungle-accent font-semibold">Our Mission</a>
+                <a href="picture.html" class="hover:text-jungle-accent transition-colors">Gallery</a>
+                <a href="BookingForm.html" class="bg-jungle-accent text-jungle-dark px-5 py-2 rounded-full font-bold hover:bg-white transition-all transform hover:scale-105">Book Now</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-white">
+                <i data-lucide="menu" class="h-8 w-8"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-jungle-dark absolute w-full border-t border-white/10">
+            <div class="flex flex-col px-4 py-4 space-y-4">
+                <a href="home.html" class="block hover:text-jungle-accent">Home</a>
+                <a href="about_us.html" class="block hover:text-jungle-accent">About Us</a>
+                <a href="our_mission.html" class="block text-jungle-accent">Our Mission</a>
+                <a href="picture.html" class="block hover:text-jungle-accent">Gallery</a>
+                <a href="BookingForm.html" class="block text-center bg-jungle-accent text-jungle-dark py-2 rounded">Book Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-[60vh] flex items-center justify-center parallax-bg" style="background-image: linear-gradient(rgba(15,31,22,0.5), rgba(15,31,22,0.7)), url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
+        <div class="text-center text-white px-4 max-w-4xl mx-auto relative z-10 mt-12">
+            <div class="inline-block border border-jungle-accent/50 rounded-full px-4 py-1 mb-6 backdrop-blur-sm">
+                <p class="text-jungle-accent uppercase tracking-widest text-xs font-bold">Sustainability First</p>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-serif mb-6 leading-tight">Our Promise to Nature</h1>
+            <p class="text-lg md:text-xl font-light max-w-2xl mx-auto opacity-90">
+                We don't inherit the earth from our ancestors; we borrow it from our children.
+            </p>
+        </div>
+    </header>
+
+    <!-- Core Mission Statement -->
+    <section class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="fade-in-section order-2 lg:order-1">
+                <div class="relative">
+                    <img src="vecteezy_hand-holding-globe-with-planting-trees-and-blurry-green_7234679.jpg" alt="Planting trees" class="rounded-lg shadow-xl w-full h-[600px] object-cover">
+                    <div class="absolute -bottom-6 -right-6 bg-jungle-accent p-8 rounded-lg hidden md:block shadow-lg">
+                        <p class="text-jungle-dark font-serif text-3xl font-bold">10,000+</p>
+                        <p class="text-jungle-dark text-sm font-bold uppercase">Trees Planted</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="fade-in-section order-1 lg:order-2">
+                <span class="text-jungle-green font-bold uppercase tracking-widest text-sm">The Vision</span>
+                <h2 class="text-4xl md:text-5xl font-serif text-jungle-dark mt-4 mb-8">Explore Without Exploiting</h2>
+                <p class="text-lg text-stone-600 mb-6 leading-relaxed">
+                    At WildRoaming, our mission goes beyond providing thrilling safaris. We exist to protect the delicate ecosystems we operate in. Mass tourism has scarred many of the world's beautiful places; we are here to prove that luxury and sustainability can coexist.
+                </p>
+                <ul class="space-y-4 mission-list text-stone-700 font-medium">
+                    <li>Restoring natural habitats for endangered species.</li>
+                    <li>Zero-plastic policy across all our lodges and camps.</li>
+                    <li>Fair wages and education for local communities.</li>
+                    <li>Carbon-neutral travel initiatives.</li>
+                </ul>
+                <div class="mt-10">
+                    <a href="#" class="text-jungle-green font-bold border-b-2 border-jungle-accent pb-1 hover:text-jungle-accent transition-colors">Read our 2024 Impact Report &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Three Pillars -->
+    <section class="py-20 bg-jungle-dark text-white relative">
+        <!-- Subtle SVG Texture -->
+        <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 fade-in-section">
+                <h2 class="text-3xl md:text-4xl font-serif mb-4">Our Three Pillars</h2>
+                <div class="w-24 h-1 bg-jungle-accent mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Pillar 1 -->
+                <div class="bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition-colors fade-in-section">
+                    <div class="mb-6 bg-leaf-light/20 w-14 h-14 rounded-full flex items-center justify-center text-leaf-light">
+                        <i data-lucide="paw-print" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif mb-4 text-leaf-light">Wildlife Conservation</h3>
+                    <p class="text-stone-300 leading-relaxed">
+                        We directly fund anti-poaching units and veterinary researchers. 15% of your ticket goes to the "Guardians of the Wild" fund.
+                    </p>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div class="bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition-colors fade-in-section delay-100">
+                    <div class="mb-6 bg-leaf-light/20 w-14 h-14 rounded-full flex items-center justify-center text-leaf-light">
+                        <i data-lucide="users" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif mb-4 text-leaf-light">Community First</h3>
+                    <p class="text-stone-300 leading-relaxed">
+                        Conservation fails without community. We hire 95% of our staff locally and support schools and clinics in the villages bordering the parks.
+                    </p>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition-colors fade-in-section delay-200">
+                    <div class="mb-6 bg-leaf-light/20 w-14 h-14 rounded-full flex items-center justify-center text-leaf-light">
+                        <i data-lucide="sun" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif mb-4 text-leaf-light">Green Footprint</h3>
+                    <p class="text-stone-300 leading-relaxed">
+                        Our lodges run on 100% solar power. We use electric safari vehicles where possible and treat all water on-site to return it clean to the earth.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Initiative Showcase -->
+    <section class="py-20 bg-stone-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-stone-300 pb-6 fade-in-section">
+                <div>
+                    <span class="text-jungle-green font-bold uppercase tracking-widest text-sm">Active Projects</span>
+                    <h2 class="text-4xl font-serif text-jungle-dark mt-2">Current Initiatives</h2>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <p class="text-stone-500 italic">Updated: October 2025</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="group bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all fade-in-section">
+                    <div class="h-48 w-full overflow-hidden rounded-lg mb-6 relative">
+                        <img src="https://images.unsplash.com/photo-1535941339077-2dd1c7963098?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Rhino" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-bold">Ongoing</div>
+                    </div>
+                    <h3 class="text-2xl font-serif text-jungle-dark mb-2">Project Rhino Shield</h3>
+                    <p class="text-stone-600 mb-4">Implementing drone surveillance technology to assist rangers in monitoring the black rhino population at night.</p>
+                    <div class="w-full bg-stone-200 h-2 rounded-full overflow-hidden">
+                        <div class="bg-jungle-accent h-full w-3/4"></div>
+                    </div>
+                    <p class="text-xs text-stone-500 mt-2 text-right">75% Funded</p>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="group bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all fade-in-section delay-100">
+                    <div class="h-48 w-full overflow-hidden rounded-lg mb-6 relative">
+                        <img src="Gemini_Generated_Image_p2ef2yp2ef2yp2ef.png" alt="School" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-bold">Ongoing</div>
+                    </div>
+                    <h3 class="text-2xl font-serif text-jungle-dark mb-2">Mara Education Fund</h3>
+                    <p class="text-stone-600 mb-4">Building three new classrooms and providing solar lighting for the local primary school in the Masai Mara.</p>
+                    <div class="w-full bg-stone-200 h-2 rounded-full overflow-hidden">
+                        <div class="bg-jungle-accent h-full w-1/2"></div>
+                    </div>
+                    <p class="text-xs text-stone-500 mt-2 text-right">50% Funded</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Be Part of the Change CTA -->
+    <section class="py-24 relative parallax-bg" style="background-image: url('https://images.unsplash.com/photo-1500485035595-cbe1f645eb4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
+        <div class="absolute inset-0 bg-gradient-to-r from-jungle-dark via-jungle-dark/80 to-transparent"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
+            <div class="max-w-xl text-white fade-in-section">
+                <h2 class="text-4xl md:text-6xl font-serif mb-6">Be Part of the Change</h2>
+                <p class="text-lg text-stone-200 mb-8 leading-relaxed">
+                    You don't have to be a ranger to protect the wild. Every booking, every donation, and every shared story helps us keep the jungle wild.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#" class="bg-jungle-accent text-jungle-dark px-8 py-4 rounded-full font-bold text-lg hover:bg-white transition-all transform hover:-translate-y-1 shadow-lg">Donate to Fund</a>
+                    <a href="#" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-jungle-green transition-all">Volunteer With Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Consistent with About Us) -->
+    <footer class="bg-jungle-dark text-stone-400 py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-4 text-white">
+                        <i data-lucide="compass" class="h-6 w-6 text-jungle-accent"></i>
+                        <span class="text-xl font-serif tracking-wider">WildRoaming</span>
+                    </div>
+                    <p class="text-sm">Connecting souls to the wild since 2004. Fully insured and eco-certified.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="about_us.html" class="hover:text-jungle-accent">About Us</a></li>
+                        <li><a href="#" class="hover:text-jungle-accent">Our Safaris</a></li>
+                        <li><a href="#" class="hover:text-jungle-accent">Accommodations</a></li>
+                        <li><a href="#" class="hover:text-jungle-accent">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4"></i> +1 (555) 123-4567</li>
+                        <li class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4"></i> info@wildroaming.com</li>
+                        <li class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4"></i> 42 Safari Lane, Nairobi</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Newsletter</h4>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email" class="bg-stone-800 text-white px-4 py-2 rounded-l-lg focus:outline-none focus:ring-1 focus:ring-jungle-accent w-full">
+                        <button class="bg-jungle-accent text-jungle-dark px-4 py-2 rounded-r-lg font-bold hover:bg-white transition-colors">Go</button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 text-center text-sm">
+                <p>&copy; 2025 WildRoaming Safaris. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Scroll Animation (Intersection Observer)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

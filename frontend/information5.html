@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Devalia Park - Gypsy Safari</title>
+  <link rel='stylesheet' href='style.css'>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" />
+  <style>
+    body {
+     margin: 0;
+      padding: 0;
+      background: url("loginpanel.jpg") no-repeat center center / cover fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333; /* Default text color */
+    }
+    
+
+    nav.navbar {
+      background: rgba(255, 255, 255, 0);
+    }
+
+    .dropdown-menu {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .dropdown-item {
+      color: #f8f9fa;
+    }
+
+    .dropdown-item:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #fff;
+    }
+
+    .content-wrapper {
+      background-color: rgba(255, 255, 255, 0.92);
+      margin: 20px auto;
+      padding: 22px;
+      border-radius: 10px;
+      max-width: 1100px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .infobox {
+      float: right;
+      width: 300px;
+      margin: 0 0 20px 20px;
+      padding: 12px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+
+    .infobox img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    .section {
+      margin-bottom: 26px;
+    }
+
+    h1,
+    h2 {
+      color: #2e7d32;
+    }
+
+    h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 6px;
+      margin-bottom: 14px;
+    }
+
+    ul {
+      list-style-type: square;
+      padding-left: 20px;
+    }
+
+    .clearfix::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .back-button-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .infobox {
+        float: none;
+        width: 100%;
+        margin: 0 0 18px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand text-white" href="#">🌿Safari</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownHome" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Home
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownHome">
+            <a class="dropdown-item" href="home.html">Main Page</a>
+            <a class="dropdown-item" href="#">About Us</a>
+            <a class="dropdown-item" href="#">Resort Booking</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Our Mission</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownBooking" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Booking
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownBooking">
+            <a class="dropdown-item" href="BookingForm.html">New Booking</a>
+            <a class="dropdown-item" href="#">View Bookings</a>
+            <a class="dropdown-item" href="#">Cancel Booking</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownPicture" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Picture
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownPicture">
+            <a class="dropdown-item" href="picture.html">Gir Gallery</a>
+            <a class="dropdown-item" href="#">Devalia Gallery</a>
+          </div>
+        </li>
+      </ul>
+
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" />
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+      </form>
+
+      <ul class="navbar-nav ml-3">
+        <li class="nav-item">
+          <a class="nav-link text-white" href="../backend/logout.php">Log Out</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container content-wrapper clearfix">
+    <h1 class="mt-4">Devalia Park - Gypsy Safari</h1>
+
+    <div class="infobox">
+      <img src="gypsy.webp" alt="Devalia Park">
+      <p><strong>Location:</strong> Sasan Gir, Gujarat</p>
+      <p><strong>Nearest City:</strong> Junagadh</p>
+      <p><strong>Safari Type:</strong> Gypsy Jeep Safari</p>
+      <p><strong>Duration:</strong> 1 Hour (approx.)</p>
+      <p><strong>Timings:</strong> 8:00 AM to 11:00 AM, 3:00 PM to 5:00 PM</p>
+      <p><strong>Best Season:</strong> December to March</p>
+      <p><strong>Official Booking:</strong> <a href="https://girlion.gujarat.gov.in/" target="_blank">girlion.gujarat.gov.in</a></p>
+    </div>
+
+    <div class="section">
+      <h2>About Devalia Safari Park</h2>
+      <p>Devalia Safari Park, also known as the Gir Interpretation Zone, is a fenced area located near Sasan Gir. It was created to offer visitors a quick and safe glimpse of Gir’s wildlife, including Asiatic lions, without the need to enter the main forest area.</p>
+      <p>The park spans over 4 square kilometers and is an ideal destination for families and wildlife photographers.</p>
+    </div>
+
+    <img src="12.jpg" alt="Gypsy Safari" style="width: 100%; max-width: 900px; height: auto; margin-bottom: 18px;">
+
+    <div class="section">
+      <h2>Safari Experience</h2>
+      <p>The Devalia Gypsy Safari is conducted in open jeeps (Gypsies) accompanied by trained guides. The route covers grasslands, water bodies, and forest patches where visitors can easily spot lions, leopards, deer, and various bird species.</p>
+      <ul>
+        <li>Safari Duration: Approximately 1 hour</li>
+        <li>Each Gypsy accommodates up to 6 passengers</li>
+        <li>Online booking recommended (limited seats per slot)</li>
+        <li>Photography allowed (no drones permitted)</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Wildlife & Attractions</h2>
+      <ul>
+        <li>Asiatic Lions (main highlight)</li>
+        <li>Blue Bull (Nilgai), Spotted Deer, and Wild Boar</li>
+        <li>Jackals, Hyenas, and Peacocks</li>
+        <li>Interpretation Center and Nature Education Zone</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Booking Information</h2>
+      <p>You can book the Devalia Gypsy Safari through the official <a href="https://girlion.gujarat.gov.in/" target="_blank">Gir Online Booking Portal</a>. Choose “Devalia Park Safari” while selecting the safari type. Visitors must carry ID proof and the booking confirmation printout at the time of entry.</p>
+    </div>
+
+    <div class="section">
+      <h2>Visitor Guidelines</h2>
+      <ul>
+        <li>Arrive 30 minutes before safari timing.</li>
+        <li>Follow the guide’s instructions strictly.</li>
+        <li>Do not get down from the vehicle.</li>
+        <li>Maintain silence and avoid littering.</li>
+        <li>Use binoculars for better viewing.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Contact & Location</h2>
+      <p><strong>Address:</strong> Devalia Safari Park, Talala, Sasan Gir, Gujarat 362135</p>
+      <p><strong>Contact:</strong> +91 2877 285540 (Forest Department Office)</p>
+      <p><strong>Official Website:</strong> <a href="https://girlion.gujarat.gov.in/" target="_blank">https://girlion.gujarat.gov.in/</a></p>
+    </div>
+
+    <div class="back-button-container">
+      <a href="home.html" class="btn btn-success">Back to Home</a>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

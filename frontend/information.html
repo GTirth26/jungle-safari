@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gir National Park - Jungle Safari</title>
+  <link rel='stylesheet' href='style.css'>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+  <style>
+    /* --- Styles from the previous file for consistency --- */
+    body {
+      margin: 0;
+      padding: 0;
+      background: url("loginpanel.jpg") no-repeat center center / cover fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333; /* Default text color */
+    }
+
+    nav.navbar {
+      background: rgba(255, 255, 255, 0);
+    }
+    
+    .dropdown-menu {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+    .dropdown-item {
+        color: #f8f9fa;
+    }
+    .dropdown-item:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: #fff;
+    }
+
+    /* --- Original styles for this page's content --- */
+    .content-wrapper {
+        background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background for content */
+        margin: 20px;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .infobox {
+      float: right;
+      width: 300px;
+      margin: 0 0 20px 20px;
+      padding: 10px;
+      background-color: #fff;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+    }
+
+    .infobox img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    h1, h2 {
+      color: #2e7d32; /* Green headings to match safari theme */
+    }
+
+    h2 {
+      border-bottom: 2px solid #aaa;
+      padding-bottom: 5px;
+    }
+
+    ul {
+      list-style-type: square;
+      padding-left: 20px;
+    }
+
+    .clearfix::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    
+    .back-button-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand text-white" href="#"> 🌿Safari</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+      data-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownHome" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Home
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownHome">
+            <a class="dropdown-item" href="home.html">Main Page</a>
+            <a class="dropdown-item" href="#">About Us</a>
+            <a class="dropdown-item" href="#">Resort Booking</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Our Mission</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownBooking" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Booking
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownBooking">
+            <a class="dropdown-item" href="BookingForm.html">New Booking</a>
+            <a class="dropdown-item" href="#">View Bookings</a>
+            <a class="dropdown-item" href="#">Cancel Booking</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownPicture" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Picture
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownPicture">
+            <a class="dropdown-item" href="picture.html">Gir Gallery</a>
+            <a class="dropdown-item" href="#">Ranthambore Gallery</a>
+            <a class="dropdown-item" href="#">Corbett Gallery</a>
+          </div>
+        </li>
+      </ul>
+
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" />
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+      </form>
+
+      <ul class="navbar-nav ml-3">
+         <li class="nav-item">
+        <a class="nav-link text-white" href="../backend/logout.php">Log Out</a>
+      </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container content-wrapper clearfix">
+    <h1 class="mt-4">Gir National Park - Jungle Safari</h1>
+    <div class="infobox">
+      <img src="lion Safari.jpg" alt="Gir National Park">
+      <p><strong>Location:</strong> Gujarat, India</p>
+      <p><strong>Nearest City:</strong> Junagadh</p>
+      <p><strong>Coordinates:</strong> 21.1240°N, 70.8242°E</p>
+      <p><strong>Area:</strong> 1,412 km²</p>
+      <p><strong>Established:</strong> 18 September 1965</p>
+      <p><strong>Governing Body:</strong> Forest Department, Gujarat</p>
+      <p><a href="https://girlion.gujarat.gov.in/" target="_blank">Official Website</a></p>
+    </div>
+
+    <div class="section">
+      <h2>About Gir National Park</h2>
+      <p>Gir National Park, also known as Sasan Gir, is a renowned wildlife sanctuary in Gujarat, India. It is the only place in the world where Asiatic lions can be seen in their natural habitat. The park is a haven for wildlife enthusiasts and nature lovers.</p>
+    </div>
+    
+    <img src="10.jpg" alt="Gir Jungle" style="width: 100%; max-width: 510px; height: auto; margin-bottom: 20px;">
+    
+    <div class="section">
+      <h2>Wildlife</h2>
+      <p>The park is home to more than 600 Asiatic lions. Other wildlife species include:</p>
+      <ul>
+        <li>Leopards</li>
+        <li>Chinkara (Indian gazelle)</li>
+        <li>Nilgai (blue bull)</li>
+        <li>Sambar deer</li>
+        <li>Four-horned antelope</li>
+        <li>Jackals and hyenas</li>
+        <li>Crocodiles</li>
+        <li>Over 300 species of birds</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Flora</h2>
+      <p>Gir is a mixed deciduous forest interspersed with grasslands. Important tree species include:</p>
+      <ul>
+        <li>Teak</li>
+        <li>Jamun</li>
+        <li>Tendu</li>
+        <li>Dhak</li>
+        <li>Acacia</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Safari Experience</h2>
+      <p>Gir Jungle Safari offers guided jeep tours to explore the park. Safari booking can be done online through the official website. There are 8 safari routes and timings depend on the season. Trained guides accompany each safari.</p>
+    </div>
+
+    <div class="section">
+      <h2>Attractions</h2>
+      <ul>
+        <li>Devalia Safari Park (Interpretation Zone)</li>
+        <li>Kankai Mata Temple</li>
+        <li>Kamleshwar Dam</li>
+        <li>Girnar Hills (near Junagadh)</li>
+        <li>Local tribal culture and festivals</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Visitor Information</h2>
+      <p><strong>Best time to visit:</strong> December to March (Park is closed from 16th June to 15th October)</p>
+      <p><strong>Entry permits:</strong> Available online or at the park gate</p>
+      <p><strong>Accommodations:</strong> Forest lodges, resorts, and hotels are available nearby</p>
+    </div>
+
+    <div class="section">
+      <h2>External Links</h2>
+      <ul>
+        <li><a href="https://girlion.gujarat.gov.in/" target="_blank">Gir Official Tourism Site</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Gir_National_Park" target="_blank">Wikipedia - Gir National Park</a></li>
+      </ul>
+    </div>
+    
+    <div class="back-button-container">
+      <a href="home.html" class="btn btn-success">Back to Home</a>
+    </div>
+
+  </div> <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

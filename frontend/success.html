@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Payment Gateway - Jungle Safari</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --accent: #2e7d32;
+      --accent-light: #a5d6a7;
+      --bg: #f5f5f5;
+      --card-bg: #ffffff;
+      --radius: 8px;
+      --space: 1rem;
+      --font-stack: system-ui, "Segoe UI", Roboto, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 0; font-family: var(--font-stack);
+      background-color: var(--bg); color: #222; line-height: 1.4;
+      display: flex; justify-content: center; align-items: center; min-height: 100vh;
+    }
+    
+    .container {
+      width: 100%; max-width: 900px;
+      margin: 20px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    }
+
+    /* --- Left Side: Booking Summary --- */
+    .summary-card {
+      background: var(--card-bg); padding: 25px; border-radius: var(--radius);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    h2 { margin-top: 0; color: var(--accent); border-bottom: 2px solid #eee; padding-bottom: 10px; }
+    
+    .summary-row {
+      display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.95rem;
+    }
+    .summary-row strong { color: #555; }
+    .summary-row span { font-weight: 600; text-align: right; }
+    
+    .total-row {
+      margin-top: 20px; padding-top: 15px; border-top: 2px dashed #ccc;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .total-row strong { font-size: 1.2rem; color: var(--accent); }
+    .total-row span { font-size: 1.5rem; font-weight: 800; color: #333; }
+
+    /* --- Right Side: Payment Options --- */
+    .payment-card {
+      background: var(--card-bg); padding: 25px; border-radius: var(--radius);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .tabs { display: flex; gap: 10px; margin-bottom: 20px; }
+    .tab-btn {
+      flex: 1; padding: 10px; border: 1px solid #ddd; background: #f9f9f9;
+      cursor: pointer; border-radius: 6px; font-weight: 600; color: #555;
+      transition: all 0.2s;
+    }
+    .tab-btn.active {
+      background: var(--accent); color: white; border-color: var(--accent);
+    }
+
+    .payment-content { display: none; animation: fadeIn 0.3s; }
+    .payment-content.active { display: block; }
+
+    /* UPI Style */
+    .qr-box {
+      text-align: center; border: 2px border var(--accent); padding: 20px; background: #f0fff4; border-radius: 8px;
+    }
+    .qr-placeholder {
+      width: 150px; height: 150px; margin: 0 auto 10px; background: white;
+      background-image: url('https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=JungleSafariPayment');
+      background-size: contain;
+    }
+
+    /* Card Style */
+    .input-group { margin-bottom: 15px; }
+    .input-group label { display: block; font-size: 0.9rem; margin-bottom: 5px; font-weight: 600; }
+    .input-group input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
+    .card-row { display: flex; gap: 10px; }
+
+    /* Cash Style */
+    .cash-box { text-align: center; padding: 30px; background: #fff8e1; border-radius: 8px; border: 1px solid #ffe082; }
+    .cash-icon { font-size: 3rem; margin-bottom: 10px; }
+
+    /* Confirm Button */
+    .pay-btn {
+      width: 100%; padding: 14px; background: var(--accent); color: white;
+      border: none; border-radius: var(--radius); font-size: 1.1rem; font-weight: bold;
+      cursor: pointer; margin-top: 20px; transition: background 0.2s;
+    }
+    .pay-btn:hover { background: #1b5e20; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (max-width: 768px) { .container { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <div class="summary-card">
+      <h2>Booking Summary</h2>
+      <div class="summary-row"><strong>Date:</strong> <span id="dispDate">Loading...</span></div>
+      <div class="summary-row"><strong>Park:</strong> <span id="dispPark">Loading...</span></div>
+      <div class="summary-row"><strong>Name:</strong> <span id="dispName">Loading...</span></div>
+      <div class="summary-row"><strong>Phone:</strong> <span id="dispPhone">Loading...</span></div>
+      <div class="summary-row"><strong>Email:</strong> <span id="dispEmail">Loading...</span></div>
+      <div class="summary-row"><strong>Persons:</strong> <span id="dispPersons">0</span></div>
+      
+      <div class="total-row">
+        <strong>Total Payable:</strong>
+        <span id="dispTotal">₹0</span>
+      </div>
+    </div>
+
+    <div class="payment-card">
+      <h2>Select Payment Method</h2>
+      
+      <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('upi')">UPI / QR</button>
+        <button class="tab-btn" onclick="switchTab('card')">Credit Card</button>
+        <button class="tab-btn" onclick="switchTab('cash')">Cash</button>
+      </div>
+
+      <div id="upi" class="payment-content active">
+        <div class="qr-box">
+          <div class="qr-placeholder" title="Scan to Pay"></div>
+          <p style="margin-bottom:5px;"><strong>Scan to Pay</strong></p>
+          <small>Use GooglePay, PhonePe, or Paytm</small>
+        </div>
+      </div>
+
+      <div id="card" class="payment-content">
+        <div class="input-group">
+          <label>Card Number</label>
+          <input type="text" placeholder="XXXX XXXX XXXX XXXX" maxlength="19">
+        </div>
+        <div class="card-row">
+          <div class="input-group">
+            <label>Expiry</label>
+            <input type="text" placeholder="MM/YY" maxlength="5">
+          </div>
+          <div class="input-group">
+            <label>CVV</label>
+            <input type="password" placeholder="123" maxlength="3">
+          </div>
+        </div>
+        <div class="input-group">
+          <label>Card Holder Name</label>
+          <input type="text" placeholder="Name on card">
+        </div>
+      </div>
+
+      <div id="cash" class="payment-content">
+        <div class="cash-box">
+          <div class="cash-icon">🏨</div>
+          <h3>Pay at Counter</h3>
+          <p>Please show this booking summary at the entry gate and pay in cash.</p>
+        </div>
+      </div>
+
+      <button class="pay-btn" onclick="confirmPayment()">Confirm & Pay</button>
+    </div>
+
+  </div>
+
+  <script>
+    // 1. URL se Data nikalne ka code
+    window.onload = function() {
+      const params = new URLSearchParams(window.location.search);
+
+      // Data ko HTML element me daalo
+      document.getElementById('dispDate').innerText = params.get('date') || 'N/A';
+      document.getElementById('dispPark').innerText = params.get('park') || 'N/A';
+      document.getElementById('dispName').innerText = params.get('name') || 'N/A';
+      document.getElementById('dispPhone').innerText = params.get('phone') || 'N/A';
+      document.getElementById('dispEmail').innerText = params.get('email') || 'N/A';
+      document.getElementById('dispPersons').innerText = params.get('persons') || '0';
+      document.getElementById('dispTotal').innerText = params.get('total') || '₹0';
+    };
+
+    // 2. Tabs Switch karne ka logic
+    function switchTab(tabName) {
+      // Buttons ko reset karo
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      // Content ko chhupao
+      document.querySelectorAll('.payment-content').forEach(content => content.classList.remove('active'));
+
+      // Clicked button ko active karo
+      event.target.classList.add('active');
+      // Sahi content dikhao
+      document.getElementById(tabName).classList.add('active');
+    }
+
+    // 3. Payment Confirm Logic (Simulation)
+    function confirmPayment() {
+      const activeTab = document.querySelector('.tab-btn.active').innerText;
+      alert("Payment Successful via " + activeTab + "!\n\nBooking ID: JUNGLE-" + Math.floor(Math.random() * 10000));
+      // Yahan tum redirect kar sakte ho "success.html" par
+      // window.location.href = "success.html";
+    }
+  </script>
+
+</body>
+</html>

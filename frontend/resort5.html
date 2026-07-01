@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devalia Safari Camp | Luxury Safari Stay</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS (via CDN for standalone usage) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        jungle: {
+                            light: '#4a7c59',
+                            DEFAULT: '#2f5e41',
+                            dark: '#1a3c27',
+                        },
+                        sand: {
+                            light: '#f9f7f2',
+                            DEFAULT: '#e6dfd1',
+                            dark: '#c5bba8',
+                        },
+                        gold: {
+                            DEFAULT: '#d4af37',
+                            hover: '#b5952f'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles for things Tailwind can't handle easily inline */
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card-zoom:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-sand-light antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-jungle-dark/95 backdrop-blur-sm shadow-lg text-white" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <i class="fa-solid fa-tree text-gold text-2xl mr-2"></i>
+                    <span class="font-serif text-2xl font-bold tracking-wider">THE PREMIER GIR</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="home.html" class="hover:text-gold transition-colors">Home</a>
+                    <a href="about_us.html" class="hover:text-gold transition-colors">About</a>
+                    <a href="home.html" class="hover:text-gold transition-colors">Rooms</a>
+                    <a href="home.html" class="hover:text-gold transition-colors">Safari</a>
+                    <a href="#amenities" class="hover:text-gold transition-colors">Amenities</a>
+                    <button onclick="openBookingModal()" class="bg-gold hover:bg-gold-hover text-white px-6 py-2 rounded-full font-medium transition-all transform hover:scale-105">
+                        Book Now
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-white hover:text-gold focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-jungle-dark border-t border-jungle-light">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="home.html" class="block px-3 py-2 rounded-md hover:bg-jungle text-white">Home</a>
+                <a href="about_us.html" class="block px-3 py-2 rounded-md hover:bg-jungle text-white">About</a>
+                <a href="#rooms" class="block px-3 py-2 rounded-md hover:bg-jungle text-white">Rooms</a>
+                <a href="#amenities" class="block px-3 py-2 rounded-md hover:bg-jungle text-white">Amenities</a>
+                <button onclick="openBookingModal()" class="w-full text-left px-3 py-2 bg-gold text-white rounded-md mt-2">Book Now</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg h-screen flex items-center justify-center relative">
+        <div class="text-center text-white px-4 max-w-4xl fade-in-up">
+            <p class="text-lg md:text-xl font-light tracking-widest mb-4 text-gold uppercase">Welcome to the Wilderness</p>
+            <h1 class="font-serif text-5xl md:text-7xl font-bold mb-6 leading-tight">Devalia Safari Camp</h1>
+            <p class="text-lg md:text-2xl mb-10 font-light opacity-90">Experience the majesty of the Asiatic Lion with 5-star luxury comfort.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button onclick="scrollToSection('rooms')" class="bg-gold hover:bg-gold-hover text-white px-8 py-4 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg">
+                    View Rooms
+                </button>
+                
+                <a href="https://www.devaliasafaricamp.com/" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-semibold transition-all inline-block shadow-lg">Official Website</a>
+            </div>
+        </div>
+        
+        <!-- Scroll Down Indicator -->
+        <div class="absolute bottom-10 animate-bounce">
+            <i class="fa-solid fa-chevron-down text-white text-2xl opacity-70"></i>
+        </div>
+    </section>
+
+    <!-- Availability Checker (Floating Bar) -->
+    <div class="hidden md:block relative z-30 -mt-12 mx-auto max-w-5xl px-4">
+        <div class="bg-white rounded-lg shadow-2xl p-6 grid grid-cols-4 gap-4 items-end">
+            <div>
+                <label class="block text-xs font-bold text-gray-500 uppercase tracking-wide">Check In</label>
+                <input type="date" class="w-full mt-1 border-b-2 border-gray-200 focus:border-gold outline-none py-2 text-gray-700">
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-gray-500 uppercase tracking-wide">Check Out</label>
+                <input type="date" class="w-full mt-1 border-b-2 border-gray-200 focus:border-gold outline-none py-2 text-gray-700">
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-gray-500 uppercase tracking-wide">Guests</label>
+                <select class="w-full mt-1 border-b-2 border-gray-200 focus:border-gold outline-none py-2 text-gray-700 bg-white">
+                    <option>2 Adults, 0 Children</option>
+                    <option>2 Adults, 1 Child</option>
+                    <option>Solo Traveler</option>
+                </select>
+            </div>
+            <button onclick="openBookingModal()" class="bg-jungle-dark hover:bg-jungle text-white h-12 rounded shadow transition-colors font-medium">
+                Check Availability
+            </button>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 md:py-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <div class="absolute -top-4 -left-4 w-24 h-24 bg-gold/20 rounded-full z-0"></div>
+                    <img src="p.png" alt="Resort Exterior" class="relative z-10 rounded-lg shadow-xl w-full object-cover h-[500px]">
+                    <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded shadow-lg z-20 hidden md:block">
+                        <p class="font-serif text-4xl text-jungle-dark font-bold">15+</p>
+                        <p class="text-sm text-gray-500 uppercase tracking-wide">Years of Excellence</p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-gold font-bold tracking-widest uppercase mb-2">About The Resort</h4>
+                    <h2 class="font-serif text-4xl lg:text-5xl font-bold text-jungle-dark mb-6">Sanctuary in the Heart of Gir</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        The Premier Gir Resort is your gateway to the world's only home of the Asiatic Lion. Nestled on the fringe of the Gir National Park, we blend rustic jungle charm with modern luxury.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Whether you are looking for an adventurous jungle safari, a relaxing spa weekend, or a family getaway, our resort provides the perfect ecosystem.
+                    </p>
+                    
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                        <li class="flex items-center text-gray-700">
+                            <i class="fa-solid fa-check text-gold mr-3"></i> Private Jungle Cottages
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fa-solid fa-check text-gold mr-3"></i> Expert Naturalist Guides
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fa-solid fa-check text-gold mr-3"></i> Organic Farm-to-Table
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="fa-solid fa-check text-gold mr-3"></i> Cultural Evening Shows
+                        </li>
+                    </ul>
+
+                    <button onclick="toggleMoreInfo()" class="bg-jungle text-white px-8 py-3 rounded hover:bg-jungle-dark transition-colors shadow-md">
+                        More Information <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </button>
+                    
+                    <!-- Hidden Content for "More Information" -->
+                    <div id="more-info-content" class="hidden mt-6 bg-white p-6 rounded-lg border-l-4 border-gold shadow-inner">
+                        <p class="text-gray-600 text-sm">
+                            <strong>Location:</strong> Located just 2km from the Sinh Sadan entry gate.<br>
+                            <strong>Climate:</strong> Enjoy pleasant mornings and cool evenings.<br>
+                            <strong>Policies:</strong> Plastic-free zone. Quiet hours after 10 PM to respect wildlife.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities / Services Section -->
+    <section id="amenities" class="bg-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h4 class="text-gold font-bold tracking-widest uppercase mb-2">Our Facilities</h4>
+                <h2 class="font-serif text-4xl font-bold text-jungle-dark">Experience World Class Services</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-sand-light p-8 rounded-xl hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:bg-gold transition-colors">
+                        <i class="fa-solid fa-bell-concierge text-2xl text-jungle group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-jungle-dark mb-3">24/7 Room Service</h3>
+                    <p class="text-gray-600">Gourmet dining delivered right to your cottage door, any time of day or night.</p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-sand-light p-8 rounded-xl hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:bg-gold transition-colors">
+                        <i class="fa-solid fa-paw text-2xl text-jungle group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-jungle-dark mb-3">Jungle Safari</h3>
+                    <p class="text-gray-600">Exclusive jeep safaris with trained guides to spot lions, leopards, and deer.</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-sand-light p-8 rounded-xl hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:bg-gold transition-colors">
+                        <i class="fa-solid fa-water-ladder text-2xl text-jungle group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-jungle-dark mb-3">Swimming Pool</h3>
+                    <p class="text-gray-600">A pristine infinity pool overlooking the mango orchards for ultimate relaxation.</p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-sand-light p-8 rounded-xl hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:bg-gold transition-colors">
+                        <i class="fa-solid fa-utensils text-2xl text-jungle group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-jungle-dark mb-3">Multi-Cuisine Restaurant</h3>
+                    <p class="text-gray-600">Authentic Kathiyawadi cuisine alongside continental favorites.</p>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="bg-sand-light p-8 rounded-xl hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:bg-gold transition-colors">
+                        <i class="fa-solid fa-wifi text-2xl text-jungle group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-jungle-dark mb-3">High-Speed WiFi</h3>
+                    <p class="text-gray-600">Stay connected with the world while surrounded by nature (Lobby & Rooms).</p>
+                </div>
+
+                 <!-- Service 6 -->
+                 <div class="bg-sand-light p-8 rounded-xl hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:bg-gold transition-colors">
+                        <i class="fa-solid fa-spa text-2xl text-jungle group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-jungle-dark mb-3">Ayurvedic Spa</h3>
+                    <p class="text-gray-600">Rejuvenate your body and mind with our traditional herbal treatments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section id="rooms" class="py-20 bg-jungle-dark text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h4 class="text-gold font-bold tracking-widest uppercase mb-2">Accommodations</h4>
+                <h2 class="font-serif text-4xl font-bold">Stay in the Wild</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Room 1 -->
+                <div class="bg-white text-gray-800 rounded-lg overflow-hidden shadow-2xl card-zoom group">
+                    <div class="h-64 overflow-hidden relative">
+                        <div class="absolute top-4 right-4 bg-gold text-white text-xs font-bold px-3 py-1 rounded z-10">BESTSELLER</div>
+                        <img src="p_resort.html" alt="Luxury Tent" class="w-full h-full object-cover transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h3 class="text-xl font-serif font-bold text-jungle-dark">Luxury Tent</h3>
+                            <span class="text-gold font-bold text-lg">₹5,000<span class="text-gray-400 text-sm font-normal">/night</span></span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Canvas walls with modern interiors, attached bath, and private sit-out area.</p>
+                        <div class="flex items-center gap-4 text-xs text-gray-500 mb-6">
+                            <span><i class="fa-solid fa-user"></i> 2 Guests</span>
+                            <span><i class="fa-solid fa-bed"></i> King Bed</span>
+                            <span><i class="fa-solid fa-wind"></i> AC</span>
+                        </div>
+                        <button onclick="openBookingModal('Luxury Tent')" class="w-full block text-center border-2 border-jungle text-jungle font-bold py-2 rounded hover:bg-jungle hover:text-white transition-colors">
+                            Book Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Room 2 -->
+                <div class="bg-white text-gray-800 rounded-lg overflow-hidden shadow-2xl card-zoom group">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Garden Cottage" class="w-full h-full object-cover transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h3 class="text-xl font-serif font-bold text-jungle-dark">Garden Cottage</h3>
+                            <span class="text-gold font-bold text-lg">₹8,500<span class="text-gray-400 text-sm font-normal">/night</span></span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Spacious cottage surrounded by mango trees with a private veranda.</p>
+                        <div class="flex items-center gap-4 text-xs text-gray-500 mb-6">
+                            <span><i class="fa-solid fa-user"></i> 3 Guests</span>
+                            <span><i class="fa-solid fa-bed"></i> 1 King + 1 Single</span>
+                            <span><i class="fa-solid fa-tv"></i> TV</span>
+                        </div>
+                        <button onclick="openBookingModal('Garden Cottage')" class="w-full block text-center border-2 border-jungle text-jungle font-bold py-2 rounded hover:bg-jungle hover:text-white transition-colors">
+                            Book Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Room 3 -->
+                <div class="bg-white text-gray-800 rounded-lg overflow-hidden shadow-2xl card-zoom group">
+                    <div class="h-64 overflow-hidden relative">
+                        <div class="absolute top-4 right-4 bg-jungle-dark text-white text-xs font-bold px-3 py-1 rounded z-10">PREMIUM</div>
+                        <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Royal Villa" class="w-full h-full object-cover transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h3 class="text-xl font-serif font-bold text-jungle-dark">Royal Villa</h3>
+                            <span class="text-gold font-bold text-lg">₹15,000<span class="text-gray-400 text-sm font-normal">/night</span></span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Ultimate luxury with private plunge pool, master bedroom, and living area.</p>
+                        <div class="flex items-center gap-4 text-xs text-gray-500 mb-6">
+                            <span><i class="fa-solid fa-user"></i> 4 Guests</span>
+                            <span><i class="fa-solid fa-water"></i> Private Pool</span>
+                            <span><i class="fa-solid fa-martini-glass"></i> Mini Bar</span>
+                        </div>
+                        <button onclick="openBookingModal('Royal Villa')" class="w-full block text-center border-2 border-jungle text-jungle font-bold py-2 rounded hover:bg-jungle hover:text-white transition-colors">
+                            Book Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Banner -->
+    <section class="py-16 bg-gold text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: url('https://www.transparenttextures.com/patterns/cubes.png');"></div>
+        <div class="max-w-7xl mx-auto px-4 text-center relative z-10">
+            <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4">Ready for your Jungle Adventure?</h2>
+            <p class="text-xl mb-8">Book directly with us and get a complimentary nature walk.</p>
+            <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" class="bg-white text-gold font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition-colors shadow-lg">
+                Contact Us Today
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="bg-gray-900 text-gray-300 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                
+                <!-- Brand -->
+                <div>
+                    <div class="flex items-center mb-6">
+                        <i class="fa-solid fa-tree text-gold text-2xl mr-2"></i>
+                        <span class="font-serif text-xl font-bold text-white tracking-wider">THE PREMIER GIR</span>
+                    </div>
+                    <p class="text-sm leading-relaxed mb-6">
+                        An oasis of luxury on the edge of the wilderness. We are dedicated to providing sustainable hospitality while you explore the home of the Lions.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gold hover:text-white transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gold hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gold hover:text-white transition-colors"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-white font-bold uppercase tracking-wider mb-6">Quick Links</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#" class="hover:text-gold transition-colors">Our Story</a></li>
+                        <li><a href="#rooms" class="hover:text-gold transition-colors">Accommodations</a></li>
+                        <li><a href="#safari" class="hover:text-gold transition-colors">Safari Booking</a></li>
+                        <li><a href="#" class="hover:text-gold transition-colors">Gallery</a></li>
+                        <li><a href="#" class="hover:text-gold transition-colors">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-white font-bold uppercase tracking-wider mb-6">Contact Us</h3>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-location-dot text-gold mt-1 mr-3"></i>
+                            <span>Sasan Gir Road, Near Sinh Sadan,<br>Gujarat, India - 362135</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-phone text-gold mr-3"></i>
+                            <span>+91 98765 43210</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-envelope text-gold mr-3"></i>
+                            <span>reservations@premiergir.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h3 class="text-white font-bold uppercase tracking-wider mb-6">Newsletter</h3>
+                    <p class="text-sm mb-4">Subscribe for special offers and wildlife updates.</p>
+                    <form class="flex flex-col gap-2" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+                        <input type="email" placeholder="Your Email Address" class="bg-gray-800 border-none rounded px-4 py-2 text-white focus:ring-1 focus:ring-gold outline-none w-full">
+                        <button type="submit" class="bg-gold text-white font-bold py-2 rounded hover:bg-gold-hover transition-colors">Subscribe</button>
+                    </form>
+                </div>
+
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-sm">
+                <p>&copy; 2023 The Premier Gir Resort. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="fixed inset-0 bg-black bg-opacity-70 z-[60] hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-2xl max-w-md w-full p-8 relative animate-[fadeIn_0.3s_ease-out]">
+            <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-gray-500 hover:text-red-500">
+                <i class="fa-solid fa-xmark text-2xl"></i>
+            </button>
+            
+            <h3 class="text-2xl font-serif font-bold text-jungle-dark mb-2">Book Your Stay</h3>
+            <p class="text-gray-500 text-sm mb-6">Fill in the details to reserve your room at <span id="modal-room-name" class="font-bold text-gold">The Premier Gir</span>.</p>
+            
+            <form onsubmit="event.preventDefault(); alert('Thank you! Our reservation team will contact you shortly.'); closeBookingModal();">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Full Name</label>
+                        <input type="text" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gold focus:border-gold">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Phone Number</label>
+                        <input type="tel" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gold focus:border-gold">
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Check In</label>
+                            <input type="date" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gold focus:border-gold">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Guests</label>
+                            <input type="number" min="1" value="2" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gold focus:border-gold">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Room Type</label>
+                        <select id="modal-select" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gold focus:border-gold">
+                            <option>Luxury Tent</option>
+                            <option>Garden Cottage</option>
+                            <option>Royal Villa</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-jungle-dark text-white font-bold py-3 rounded mt-6 hover:bg-jungle transition-colors">
+                    Confirm Booking Request
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Sticky Navbar effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg');
+                navbar.classList.add('bg-opacity-100');
+            } else {
+                // navbar.classList.remove('shadow-lg');
+            }
+        });
+
+        // Smooth Scroll Helper
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // More Info Toggle
+        function toggleMoreInfo() {
+            const content = document.getElementById('more-info-content');
+            content.classList.toggle('hidden');
+        }
+
+        // Modal Logic
+        const modal = document.getElementById('bookingModal');
+        const modalSelect = document.getElementById('modal-select');
+        const modalRoomName = document.getElementById('modal-room-name');
+
+        function openBookingModal(roomType) {
+            modal.classList.remove('hidden');
+            if (roomType) {
+                modalSelect.value = roomType;
+                modalRoomName.innerText = roomType;
+            } else {
+                modalRoomName.innerText = "The Premier Gir";
+            }
+        }
+
+        function closeBookingModal() {
+            modal.classList.add('hidden');
+        }
+
+        // Close modal on click outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeBookingModal();
+            }
+        });
+    </script>
+</body>
+</html>

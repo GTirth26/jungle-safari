@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Payment</title>
+    <style>
+        :root {
+            --accent: #2e7d32;
+            --accent-light: #e8f5e9;
+            --text-dark: #212121;
+            --text-light: #757575;
+            --bg: #f5f9f6;
+            --radius: 8px;
+            --shadow: 0 4px 18px rgba(0, 0, 0, .08);
+            --font-stack: system-ui, "Segoe UI", Roboto, sans-serif;
+        }
+        body {
+            font-family: var(--font-stack);
+            background-color: var(--bg);
+            background: url("loginpanel.jpg") no-repeat center center / cover fixed;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 2rem 1rem;
+            display: grid;
+            place-items: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        .section { padding: 1.5rem 2rem; }
+        .section-title {
+            font-size: 1.25rem;
+            color: var(--accent);
+            margin: 0 0 1.5rem 0;
+            border-bottom: 2px solid var(--accent-light);
+            padding-bottom: 0.75rem;
+        }
+        
+        /* Summary Section */
+        #bookingSummary ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        #bookingSummary li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        #bookingSummary li:last-child { border: none; }
+        #bookingSummary strong { color: var(--text-dark); }
+        #bookingSummary .total-amount {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin-top: 1rem;
+        }
+        
+        /* Payment Section */
+        #paymentOptions { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+        .payment-method {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: var(--radius);
+            cursor: pointer;
+            text-align: center;
+            transition: all .2s ease;
+        }
+        .payment-method input { display: none; }
+        .payment-method:has(input:checked) {
+            border-color: var(--accent);
+            background-color: var(--accent-light);
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent);
+        }
+        
+        #paymentDetails > div { display: none; }
+        #qrCodeSection { text-align: center; }
+        #qrCodeSection img { max-width: 200px; margin: 1rem auto; border: 5px solid #fff; box-shadow: var(--shadow); }
+        
+        #creditCardForm { display: grid; gap: 1rem; }
+        .card-input { width: 100%; padding: .75rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 6px; }
+        .card-row { display: flex; gap: 1rem; }
+        
+        #payBtn {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            background: var(--accent);
+            color: #fff;
+            transition: background .2s;
+        }
+        #payBtn:hover { background: #1b5e20; }
+        #payBtn:disabled { background: #9e9e9e; cursor: not-allowed; }
+
+        /* Ticket & Cash Confirmation Sections */
+        #ticketSection, #cashConfirmationSection {
+            display: none;
+            background: linear-gradient(135deg, var(--accent-light), #fff);
+            border: 2px dashed var(--accent);
+            text-align: center;
+        }
+        .ticket-header h2, #cashConfirmationSection h2 { margin: 0; color: var(--accent); }
+        .ticket-header p, #cashConfirmationSection p { margin: 0.5rem 0 0 0; line-height: 1.5; }
+        .ticket-body { margin-top: 1.5rem; text-align: left; }
+        .ticket-body p { margin: 0.5rem 0; }
+        .ticket-footer { text-align: center; margin-top: 1.5rem; font-style: italic; color: var(--text-light); font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div id="bookingSummary" class="section">
+        <h2 class="section-title">Booking Summary</h2>
+        <ul>
+            <li><span>Park:</span> <strong id="summaryPark"></span></li>
+            <li><span>Name:</span> <strong id="summaryName"></span></li>
+            <li><span>Contact:</span> <strong id="summaryPhone"></span></li>
+            <li><span>Email:</span> <strong id="summaryEmail"></span></li>
+            <li><span>Persons:</span> <strong id="summaryPersons"></span></li>
+            <li class="total-amount"><span>Total Amount:</span> <strong id="summaryTotal"></span></li>
+        </ul>
+    </div>
+
+    <div id="paymentSection" class="section" style="background-color: #fafafa;">
+        <h2 class="section-title">Choose Payment Method</h2>
+        <div id="paymentOptions">
+            <label class="payment-method"><input type="radio" name="paymentMethod" value="upi"> UPI / QR Code</label>
+            <label class="payment-method"><input type="radio" name="paymentMethod" value="card"> Credit Card</label>
+            <label class="payment-method"><input type="radio" name="paymentMethod" value="cash"> Cash on Counter</label>
+        </div>
+        <div id="paymentDetails">
+            <div id="qrCodeSection">
+                <p>Scan the QR code with any UPI app (GPay, Paytm, etc.)</p>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=FakePaymentForSafari" alt="Fake QR Code">
+            </div>
+            <div id="creditCardForm">
+                <input type="text" class="card-input" placeholder="Card Number (e.g., 1234 5678 9012 3456)" maxlength="19">
+                <input type="text" class="card-input" placeholder="Cardholder Name">
+                <div class="card-row">
+                    <input type="text" class="card-input" placeholder="MM/YY">
+                    <input type="text" class="card-input" placeholder="CVV">
+                </div>
+            </div>
+            <div id="cashSection"><p>You will pay the total amount at the park entrance counter.</p></div>
+        </div>
+        <button id="payBtn" style="margin-top: 1.5rem;">Confirm Booking</button>
+    </div>
+
+    <div id="ticketSection" class="section">
+        <div class="ticket-header">
+            <h2>OFFICIAL ENTRY TICKET</h2>
+            <p id="ticketPark"></p>
+        </div>
+        <div class="ticket-body">
+            <p><strong>Booking Date:</strong> <span id="ticketDate"></span></p>
+            <p><strong>Visitor Name:</strong> <span id="ticketName"></span></p>
+            <p><strong>Contact:</strong> <span id="ticketPhone"></span></p>
+            <p><strong>Number of Persons:</strong> <span id="ticketPersons"></span></p>
+            <p style="font-size: 1.5rem; margin-top: 1rem;"><strong>Total Amount Paid:</strong> <span id="ticketTotal" style="color: var(--accent);"></span></p>
+        </div>
+        <div class="ticket-footer">
+            <p>This is a computer-generated ticket. Please show this at the entry gate.</p>
+        </div>
+    </div>
+
+    <div id="cashConfirmationSection" class="section">
+        <h2>Booking Confirmed!</h2>
+        <p>Your booking has been approved. Please pay the total amount at the park entrance gate to collect your official entry ticket.</p>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Get elements
+        const summary = {
+            park: document.getElementById('summaryPark'), name: document.getElementById('summaryName'),
+            phone: document.getElementById('summaryPhone'), email: document.getElementById('summaryEmail'),
+            persons: document.getElementById('summaryPersons'), total: document.getElementById('summaryTotal')
+        };
+        const ticket = {
+            park: document.getElementById('ticketPark'), date: document.getElementById('ticketDate'),
+            name: document.getElementById('ticketName'), phone: document.getElementById('ticketPhone'),
+            persons: document.getElementById('ticketPersons'), total: document.getElementById('ticketTotal')
+        };
+        const paymentSection = document.getElementById('paymentSection');
+        const ticketSection = document.getElementById('ticketSection');
+        const cashConfirmationSection = document.getElementById('cashConfirmationSection');
+        const payBtn = document.getElementById('payBtn');
+
+        // Parse URL for booking data
+        const params = new URLSearchParams(window.location.search);
+        const bookingData = {
+            park: params.get('park') || 'N/A', name: params.get('name') || 'N/A',
+            phone: params.get('phone') || 'N/A', email: params.get('email') || 'N/A',
+            persons: params.get('persons') || 'N/A', total: params.get('total') || 'N/A',
+            date: params.get('date') || new Date().toLocaleDateString('en-GB')
+        };
+
+        // Populate summary
+        summary.park.textContent = bookingData.park;
+        summary.name.textContent = bookingData.name;
+        summary.phone.textContent = bookingData.phone;
+        summary.email.textContent = bookingData.email;
+        summary.persons.textContent = bookingData.persons;
+        summary.total.textContent = bookingData.total;
+
+        // Payment method selection logic
+        const paymentMethods = document.querySelectorAll('input[name="paymentMethod"]');
+        paymentMethods.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                document.querySelectorAll('#paymentDetails > div').forEach(div => div.style.display = 'none');
+                if (e.target.value === 'upi') document.getElementById('qrCodeSection').style.display = 'block';
+                else if (e.target.value === 'card') document.getElementById('creditCardForm').style.display = 'grid';
+                else if (e.target.value === 'cash') document.getElementById('cashSection').style.display = 'block';
+            });
+        });
+
+        // Pay button logic
+        payBtn.addEventListener('click', () => {
+            const selectedMethod = document.querySelector('input[name="paymentMethod"]:checked');
+            if (!selectedMethod) {
+                alert('Please select a payment method.');
+                return;
+            }
+
+            payBtn.textContent = 'Processing...';
+            payBtn.disabled = true;
+
+            setTimeout(() => {
+                // Check which method was chosen
+                if (selectedMethod.value === 'cash') {
+                    // --- CASH LOGIC ---
+                    alert('Booking Confirmed!');
+                    paymentSection.style.display = 'none';
+                    cashConfirmationSection.style.display = 'block';
+                    cashConfirmationSection.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    // --- ONLINE PAYMENT LOGIC ---
+                    alert('Payment Successful!');
+                    
+                    // Populate ticket
+                    ticket.park.textContent = bookingData.park;
+                    ticket.date.textContent = bookingData.date;
+                    ticket.name.textContent = bookingData.name;
+                    ticket.phone.textContent = bookingData.phone;
+                    ticket.persons.textContent = bookingData.persons;
+                    ticket.total.textContent = bookingData.total;
+
+                    // Hide payment and show ticket
+                    paymentSection.style.display = 'none';
+                    ticketSection.style.display = 'block';
+                    ticketSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 1500); // Simulate 1.5 second processing
+        });
+    });
+</script>
+
+</body>
+</html>

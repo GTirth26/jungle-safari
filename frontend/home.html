@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jungle Safari | Premium Experience</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Fonts are imported in style.css, but preconnect helps performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script>
+    if (window.location.protocol === 'file:') {
+      alert("STOP! You cannot run PHP logout or bookings from a local file. Redirecting to localhost.");
+      window.location.href = "http://localhost/jungle_safaris/jungle_safaris/frontend/home.html";
+    }
+  </script>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand text-white" href="#"> 🌿Safari</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <!-- Home Dropdown -->
+        <li class="nav-item dropdown active">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownHome" role="button" data-toggle="dropdown">
+            Home
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Main Page</a>
+            <a class="dropdown-item" href="about_us.html">About Us</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="our_mission.html">Our Mission</a>
+          </div>
+        </li>
+
+        <!-- Booking Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBooking" role="button" data-toggle="dropdown">
+            Booking
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="BookingForm.html">New Booking</a>
+            <a class="dropdown-item" href="bookingresort.html">Gir Lion Safari</a>
+            <a class="dropdown-item" href="RanFormREBooking.html">Ranthambore National Park</a>
+            <a class="dropdown-item" href="corbetResortBooking.html">Corbett National Park</a>
+            <a class="dropdown-item" href="blackResortBooking.html">Blackbuck Safari</a>
+            <a class="dropdown-item" href="devaliyaResirtBooking.html">Devalia Park Gypsy Safari</a>
+            <a class="dropdown-item" href="devaliyaResirtBooking.html">Devalia Park Bus Safari</a>
+          </div>
+        </li>
+
+        <!-- Picture Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPicture" role="button" data-toggle="dropdown">
+            Picture
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="picture.html">Gir Gallery</a>
+            <a class="dropdown-item" href="#">Ranthambore Gallery</a>
+            <a class="dropdown-item" href="#">Corbett Gallery</a>
+          </div>
+        </li>
+      </ul>
+
+      <!-- Search -->
+      <form class="form-inline my-2 my-lg-0" onsubmit="event.preventDefault(); alert('Search functionality will be implemented soon!');">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" />
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+      </form>
+
+      <!-- Logout -->
+      <ul class="navbar-nav ml-3">
+        <li class="nav-item">
+          <a class="nav-link text-white" href="../backend/logout.php">Log Out</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <div class="text-center text-white mt-3">
+
+    <!-- SLIDER -->
+    <div class="carousel-container">
+      <div id="safariSlider" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#safariSlider" data-slide-to="0" class="active"></li>
+          <li data-target="#safariSlider" data-slide-to="1"></li>
+          <li data-target="#safariSlider" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="pexels-pixabay-46254.jpg" class="d-block w-100" alt="Lion Safari">
+          </div>
+          <div class="carousel-item">
+            <img src="8.webp" class="d-block w-100" alt="Ranthambore">
+          </div>
+          <div class="carousel-item">
+            <img src="7.jpg" class="d-block w-100" alt="Corbett">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#safariSlider" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#safariSlider" role="button" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+      </div>
+    </div>
+
+    <!-- SAFARI SECTION -->
+    <div class="section-title">Safari Packages</div>
+    <div class="container my-5">
+      <div class="row">
+        <!-- Safari 1 -->
+        <div class="col-md-4 mb-4">
+          <div class="safari-card">
+            <img src="lion Safari.jpg" alt="Gir Lion Safari">
+            <h1>Gir Lion Safari</h1>
+            <p>Track the majestic Asiatic lions in their natural habitat of Gir forest.</p>
+            <a href="BookingForm.html" class="btn btn-success">Book Now</a>
+            <a class="btn btn-info" href="information.html">Information</a>
+            <a class="btn btn-info" href="bookingresort.html">Booking Resort</a>
+
+
+          </div>
+        </div>
+        <!-- Safari 2 -->
+        <div class="col-md-4 mb-4">
+          <div class="safari-card">
+            <img src="ranthambhor.webp" alt="Ranthambore">
+            <h1>Ranthambore National Park</h1>
+            <p>Wtch Tiger and enjoy the deep jungle trails and serene beauty.</p>
+            <a href="BookingForm.html" class="btn btn-success">Book Now</a>
+            <a class="btn btn-info" href="information2.html">Information</a>
+            <a class="btn btn-info" href="RanFormREBooking.html">Booking Resort</a>
+
+          </div>
+        </div>
+        <!-- Safari 3 -->
+        <div class="col-md-4 mb-4">
+          <div class="safari-card">
+            <img src="Corbett National Park.jpg" alt="Corbett National Park">
+            <h1>Corbett National Park</h1>
+            <p>Ride on Elephant and enjoy the deep jungle trails and serene beauty.</p>
+            <a href="BookingForm.html" class="btn btn-success">Book Now</a>
+            <a class="btn btn-info" href="information3.html">Information</a>
+            <a class="btn btn-info" href="corbetResortBooking.html">Booking Resort</a>
+
+          </div>
+        </div>
+        <!-- Safari 4 -->
+        <div class="col-md-4 mb-4">
+          <div class="safari-card">
+            <img src="Blackbuck Safari.jpg" alt="Blackbuck Safari">
+            <h1>Blackbuck Safari</h1>
+            <p>Wtch Blackbuck and enjoy the deep jungle trails and serene beauty.</p>
+            <a href="BookingForm.html" class="btn btn-success">Book Now</a>
+            <a class="btn btn-info" href="information4.html"> Information</a>
+            <a class="btn btn-info" href="blackResortBooking.html">Booking Resort</a>
+
+          </div>
+        </div>
+        <!-- Safari 5 -->
+        <div class="col-md-4 mb-4">
+          <div class="safari-card">
+            <img src="gypsy.webp" alt="Devalia Park Gypsy Safari">
+            <h1>Devalia Park Gypsy Safari</h1>
+            <p>Get Peaceful and wonder Experience with open Gypsy.</p>
+            <a href="BookingForm.html" class="btn btn-success">Book Now</a>
+            <a class="btn btn-info" href="information5.html">Information</a>
+            <a class="btn btn-info" href="devaliyaResirtBooking.html">Booking Resort</a>
+
+          </div>
+        </div>
+        <!-- Safari 6 -->
+        <div class="col-md-4 mb-4">
+          <div class="safari-card">
+            <img src="bus.jpg" alt="Vansda National Park">
+            <h1>Devalia Park Bus Safari</h1>
+            <p>Peaceful walking trails for those who enjoy slow, immersive exploration.</p>
+            <a href="BookingForm.html" class="btn btn-success">Book Now</a>
+            <a class="btn btn-info" href="information6.html">Information</a>
+            <a class="btn btn-info" href="devaliyaResirtBooking.html">Booking Resort</a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESORTS SECTION -->
+    <center>
+      <div class="section-title">Resorts & Home Booking</div>
+      <div class="container my-5">
+        <div class="row">
+          <!-- Resort 1 -->
+          <div class="col-md-4 mb-4">
+            <div class="safari-card">
+              <img src="ra1.png" alt="Resort 1">
+              <h1>Jungle Retreat Resort</h1>
+              <p>Experience luxury amidst nature with our exclusive jungle retreat.</p>
+              <a href="BookingForm.html" class="btn btn-success">Book Now</a>
+              <a class="btn btn-info" href="bookingresort.html">Information</a>
+            </div>
+          </div>
+
+          <!-- Resort 2 -->
+          <div class="col-md-4 mb-4">
+            <div class="safari-card">
+              <img src="re1.png" alt="Ranthambore Royal Retreat">
+              <h1>Ranthambore Royal Retreat</h1>
+              <p>Authentic heritage stay close to the tiger trails.</p>
+              <a href="BookingForm.html" class="btn btn-success">Book Now</a>
+              <a class="btn btn-info" href="resort2.html">Information</a>
+            </div>
+          </div>
+          <!-- Resort 3 -->
+          <div class="col-md-4 mb-4">
+            <div class="safari-card">
+              <img src="co1.png" alt="Corbett River View">
+              <h1>Corbett River View</h1>
+              <p>Stunning views of the Ramganga river from your balcony.</p>
+              <a href="BookingForm.html" class="btn btn-success">Book Now</a>
+              <a class="btn btn-info" href="resort3.html">Information</a>
+            </div>
+          </div>
+          <!-- Resort 4 -->
+          <div class="col-md-4 mb-4">
+            <div class="safari-card">
+              <img src="ba1.png" alt="Blackbuck Eco Lodge">
+              <h1>Blackbuck Eco Lodge</h1>
+              <p>Eco-friendly cottages offering pure bliss and nature.</p>
+              <a href="BookingForm.html" class="btn btn-success">Book Now</a>
+              <a class="btn btn-info" href="resort4.html">Information</a>
+            </div>
+          </div>
+          <!-- Resort 5 -->
+          <div class="col-md-4 mb-4">
+            <div class="safari-card">
+              <img src="de1.png" alt="Devalia Safari Camp">
+              <h1>Devalia Safari Camp</h1>
+              <p>Experience the thrill of a luxury tented camp.</p>
+              <a href="BookingForm.html" class="btn btn-success">Book Now</a>
+              <a class="btn btn-info" href="resort5.html">Information</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </center>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2026 Jungle Safari. All Rights Reserved.</p>
+  <p>
+    <a href="#" onclick="alert('Privacy Policy: We do not share your data.')">Privacy Policy</a> |
+    <a href="#" onclick="alert('Terms of Service: By booking with us, you agree to our terms.')">Terms of Service</a> |
+    <a href="#" onclick="alert('Contact Us: Email at info@junglesafaris.com | Call +91 9876543210')">Contact Us</a>
+  </p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

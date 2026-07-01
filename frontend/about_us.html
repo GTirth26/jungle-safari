@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | WildRoaming Safaris</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'jungle-dark': '#0f1f16',
+                        'jungle-green': '#1a3c2b',
+                        'jungle-accent': '#d4a373', // Earthy beige/orange
+                        'leaf-light': '#e9edc9',
+                    },
+                    fontFamily: {
+                        serif: ['"DM Serif Display"', 'serif'],
+                        sans: ['"Quicksand"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f1f16;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1a3c2b;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d4a373;
+        }
+
+        /* Parallax Effect classes */
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Fade In Animation */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, visibility;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+    </style>
+</head>
+<body class="bg-stone-100 font-sans text-stone-800 overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-jungle-dark/90 backdrop-blur-sm text-white py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i data-lucide="compass" class="h-8 w-8 text-jungle-accent"></i>
+                <span class="text-2xl font-serif tracking-wider">WildRoaming</span>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="home.html" class="hover:text-jungle-accent transition-colors">Home</a>
+                <a href="about_us.html" class="text-jungle-accent font-semibold">About Us</a>
+                <a href="home.html" class="hover:text-jungle-accent transition-colors">Safaris</a>
+                <a href="picture.html" class="hover:text-jungle-accent transition-colors">Gallery</a>
+                <a href="BookingForm.html" class="bg-jungle-accent text-jungle-dark px-5 py-2 rounded-full font-bold hover:bg-white transition-all transform hover:scale-105">Book Now</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-white">
+                <i data-lucide="menu" class="h-8 w-8"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-jungle-dark absolute w-full border-t border-white/10">
+            <div class="flex flex-col px-4 py-4 space-y-4">
+                <a href="#" class="block hover:text-jungle-accent">Home</a>
+                <a href="#" class="block text-jungle-accent">About Us</a>
+                <a href="#" class="block hover:text-jungle-accent">Safaris</a>
+                <a href="#" class="block hover:text-jungle-accent">Gallery</a>
+                <a href="#" class="block text-center bg-jungle-accent text-jungle-dark py-2 rounded">Book Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-[70vh] flex items-center justify-center parallax-bg" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
+        <div class="text-center text-white px-4 max-w-4xl mx-auto relative z-10 mt-16">
+            <p class="text-jungle-accent uppercase tracking-[0.3em] mb-4 text-sm md:text-base font-bold">Est. 2004</p>
+            <h1 class="text-5xl md:text-7xl font-serif mb-6 leading-tight">Guardians of the Wild</h1>
+            <p class="text-lg md:text-xl font-light max-w-2xl mx-auto opacity-90">
+                We don't just show you the jungle. We help you understand its heartbeat.
+            </p>
+        </div>
+        <!-- Decorative bottom curve -->
+        <div class="absolute bottom-0 w-full overflow-hidden leading-[0]">
+            <svg class="relative block w-[calc(100%+1.3px)] h-[60px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-stone-100"></path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Our Story Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="fade-in-section">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="h-[2px] w-12 bg-jungle-accent"></div>
+                    <span class="text-jungle-green font-bold uppercase tracking-widest text-sm">Our Story</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-serif text-jungle-dark mb-6">More Than Just A Safari</h2>
+                <p class="text-lg text-stone-600 mb-6 leading-relaxed">
+                    It started with a single Land Rover and a passion for conservation. Twenty years later, WildRoaming has become the premier bridge between humanity and the untamed world.
+                </p>
+                <p class="text-lg text-stone-600 mb-8 leading-relaxed">
+                    We believe that true adventure respects the environment. That's why 15% of every booking goes directly towards anti-poaching units and local community education programs. When you travel with us, you aren't just a tourist; you become a guardian of the wild.
+                </p>
+                <div class="flex gap-8">
+                    <div>
+                        <span class="block text-4xl font-serif text-jungle-accent">20+</span>
+                        <span class="text-sm text-stone-500 uppercase font-bold">Years Exp.</span>
+                    </div>
+                    <div>
+                        <span class="block text-4xl font-serif text-jungle-accent">15k</span>
+                        <span class="text-sm text-stone-500 uppercase font-bold">Happy Guests</span>
+                    </div>
+                    <div>
+                        <span class="block text-4xl font-serif text-jungle-accent">5</span>
+                        <span class="text-sm text-stone-500 uppercase font-bold">Awards</span>
+                    </div>
+                </div>
+            </div>
+            <div class="relative fade-in-section delay-200">
+                <div class="absolute -top-4 -left-4 w-full h-full border-2 border-jungle-accent rounded-lg z-0 hidden md:block"></div>
+                <img src="https://images.unsplash.com/photo-1534177616072-ef7dc12044f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Safari Jeep" class="relative z-10 rounded-lg shadow-2xl w-full h-[500px] object-cover">
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission / Values Parallax -->
+    <section class="py-24 parallax-bg relative" style="background-image: url('https://images.unsplash.com/photo-1549366021-9f761d450615?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
+        <div class="absolute inset-0 bg-jungle-dark/80"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-5xl font-serif text-white mb-16">Why Choose WildRoaming?</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white/10 backdrop-blur-md p-8 rounded-xl border border-white/20 hover:transform hover:-translate-y-2 transition-all duration-300 fade-in-section">
+                    <div class="bg-jungle-accent w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-jungle-dark">
+                        <i data-lucide="leaf" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Eco-Conscious</h3>
+                    <p class="text-stone-300">Zero-plastic policies, solar-powered lodges, and electric safari vehicles to minimize our footprint.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white/10 backdrop-blur-md p-8 rounded-xl border border-white/20 hover:transform hover:-translate-y-2 transition-all duration-300 fade-in-section delay-100">
+                    <div class="bg-jungle-accent w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-jungle-dark">
+                        <i data-lucide="binoculars" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Expert Tracking</h3>
+                    <p class="text-stone-300">Our guides are local experts with generations of knowledge, ensuring you see the unseen safely.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white/10 backdrop-blur-md p-8 rounded-xl border border-white/20 hover:transform hover:-translate-y-2 transition-all duration-300 fade-in-section delay-200">
+                    <div class="bg-jungle-accent w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-jungle-dark">
+                        <i data-lucide="camera" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Photography Focused</h3>
+                    <p class="text-stone-300">Specialized positioning and timing for photographers to capture that National Geographic shot.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Team Section -->
+    <section class="py-20 bg-leaf-light/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-section">
+                <span class="text-jungle-green font-bold uppercase tracking-widest text-sm">The Experts</span>
+                <h2 class="text-4xl font-serif text-jungle-dark mt-2">Meet Your Guides</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Member 1 -->
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 fade-in-section">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Guide" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-jungle-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <p class="text-white italic">"The jungle talks, you just have to listen."</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-jungle-dark">David Okello</h3>
+                        <p class="text-jungle-accent font-semibold text-sm uppercase mb-4">Head Ranger</p>
+                        <p class="text-stone-600 text-sm">With 15 years in the Serengeti, David knows the migration patterns like the back of his hand.</p>
+                    </div>
+                </div>
+
+                <!-- Member 2 -->
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 fade-in-section delay-100">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Guide" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-jungle-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <p class="text-white italic">"Preservation is the ultimate adventure."</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-jungle-dark">Sarah Jenkins</h3>
+                        <p class="text-jungle-accent font-semibold text-sm uppercase mb-4">Conservationist</p>
+                        <p class="text-stone-600 text-sm">Specialist in primate behavior and sustainable eco-tourism practices.</p>
+                    </div>
+                </div>
+
+                <!-- Member 3 -->
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 fade-in-section delay-200">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1531384441138-2736e62e0919?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Guide" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-jungle-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <p class="text-white italic">"Every trail tells a story."</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-jungle-dark">Marcus Thorne</h3>
+                        <p class="text-jungle-accent font-semibold text-sm uppercase mb-4">Survival Expert</p>
+                        <p class="text-stone-600 text-sm">Former military survival instructor turned photographic safari guide.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-jungle-green text-white relative overflow-hidden">
+        <!-- Decorative background leaf pattern (CSS simulated) -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="leaf-pattern" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <circle cx="20" cy="20" r="2" fill="currentColor" />
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#leaf-pattern)" />
+            </svg>
+        </div>
+
+        <div class="max-w-4xl mx-auto text-center px-4 relative z-10">
+            <h2 class="text-4xl md:text-5xl font-serif mb-8">Ready to Answer the Call?</h2>
+            <p class="text-xl text-stone-300 mb-10">Spots for the upcoming migration season are filling up fast. Secure your seat in the wild today.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="BookingForm.html" class="bg-jungle-accent text-jungle-dark px-8 py-4 rounded-full font-bold text-lg hover:bg-white transition-all transform hover:-translate-y-1 shadow-lg">Book Your Safari</a>
+                <a href="#" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-jungle-green transition-all">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-jungle-dark text-stone-400 py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-4 text-white">
+                        <i data-lucide="compass" class="h-6 w-6 text-jungle-accent"></i>
+                        <span class="text-xl font-serif tracking-wider">WildRoaming</span>
+                    </div>
+                    <p class="text-sm">Connecting souls to the wild since 2004. Fully insured and eco-certified.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-jungle-accent">About Us</a></li>
+                        <li><a href="#" class="hover:text-jungle-accent">Our Safaris</a></li>
+                        <li><a href="#" class="hover:text-jungle-accent">Accommodations</a></li>
+                        <li><a href="#" class="hover:text-jungle-accent">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4"></i> +1 (555) 123-4567</li>
+                        <li class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4"></i> info@wildroaming.com</li>
+                        <li class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4"></i> 42 Safari Lane, Nairobi</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Newsletter</h4>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email" class="bg-stone-800 text-white px-4 py-2 rounded-l-lg focus:outline-none focus:ring-1 focus:ring-jungle-accent w-full">
+                        <button class="bg-jungle-accent text-jungle-dark px-4 py-2 rounded-r-lg font-bold hover:bg-white transition-colors">Go</button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 text-center text-sm">
+                <p>&copy; 2025 WildRoaming Safaris. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Scroll Animation (Intersection Observer)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

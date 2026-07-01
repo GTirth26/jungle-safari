@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blackbuck Safari - Grassland Safaris</title>
+  <link rel='stylesheet' href='style.css'>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+  <style>
+    body {
+     margin: 0;
+      padding: 0;
+      background: url("loginpanel.jpg") no-repeat center center / cover fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333; /* Default text color */
+    }
+
+    nav.navbar {
+      background: rgba(255, 255, 255, 0);
+    }
+
+    .dropdown-menu {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    .dropdown-item {
+      color: #f8f9fa;
+    }
+    .dropdown-item:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #fff;
+    }
+
+    .content-wrapper {
+      background-color: rgba(255, 255, 255, 0.92);
+      margin: 20px auto;
+      padding: 22px;
+      border-radius: 10px;
+      max-width: 1100px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+
+    .infobox {
+      float: right;
+      width: 300px;
+      margin: 0 0 20px 20px;
+      padding: 12px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+
+    .infobox img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    .section {
+      margin-bottom: 26px;
+    }
+
+    h1, h2 {
+      color: #2e7d32;
+    }
+
+    h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 6px;
+      margin-bottom: 14px;
+    }
+
+    ul {
+      list-style-type: square;
+      padding-left: 20px;
+    }
+
+    .clearfix::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .back-button-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    /* responsive fix for infobox */
+    @media (max-width: 768px) {
+      .infobox {
+        float: none;
+        width: 100%;
+        margin: 0 0 18px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand text-white" href="#"> 🌿Safari</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+      data-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownHome" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Home
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownHome">
+            <a class="dropdown-item" href="home.html">Main Page</a>
+            <a class="dropdown-item" href="#">About Us</a>
+            <a class="dropdown-item" href="#">Resort Booking</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Our Mission</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownBooking" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Booking
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownBooking">
+            <a class="dropdown-item" href="BookingForm.html">New Booking</a>
+            <a class="dropdown-item" href="#">View Bookings</a>
+            <a class="dropdown-item" href="#">Cancel Booking</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownPicture" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Picture
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownPicture">
+            <a class="dropdown-item" href="picture.html">Gallery</a>
+            <a class="dropdown-item" href="#">Other Parks</a>
+          </div>
+        </li>
+      </ul>
+
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" />
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+      </form>
+
+      <ul class="navbar-nav ml-3">
+         <li class="nav-item">
+           <a class="nav-link text-white" href="../backend/logout.php">Log Out</a>
+         </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container content-wrapper clearfix">
+    <h1 class="mt-4">Blackbuck Safari</h1>
+
+    <div class="infobox">
+      <!-- Replace 'blackbuck-thumb.jpg' with your image file -->
+      <img src="Blackbuck Safari.jpg" alt="Blackbuck">
+      <p><strong>Species:</strong> Blackbuck (<em>Antilope cervicapra</em>)</p>
+      <p><strong>Habitat:</strong> Grasslands & scrublands</p>
+      <p><strong>Typical Duration:</strong> 1 - 2 hours</p>
+      <p><strong>Best time:</strong> October – March</p>
+      <p><strong>Popular Parks:</strong> Velavadar, Rehekuri, Ranibennur</p>
+      <p><a href="#" target="_blank">Official Booking / Info</a></p>
+    </div>
+
+    <div class="section">
+      <h2>About the Blackbuck</h2>
+      <p>The blackbuck is a native Indian antelope known for its striking appearance and speed. Males have dark brown to black coats with long, spiraled horns; females and juveniles are lighter in color. They are grazers that prefer open grasslands where they form herds — sometimes numbering in the hundreds.</p>
+    </div>
+
+    <img src="14.jpg" alt="Blackbuck in grassland" style="width:100%; max-width:900px; height:auto; margin-bottom:18px;">
+
+    <div class="section">
+      <h2>Where to see Blackbuck (selected locations)</h2>
+      <ul>
+        <li><strong>Velavadar Blackbuck National Park, Gujarat</strong> — largest and most reliable place to see large herds; good birdlife too.</li>
+        <li><strong>Rehekuri Blackbuck Sanctuary, Maharashtra</strong> — compact sanctuary, excellent for short safaris and photography.</li>
+        <li><strong>Ranibennur Blackbuck Sanctuary, Karnataka</strong> — mixed landscape and stable populations.</li>
+        <li><strong>Point Calimere, Tamil Nadu</strong> — coastal reserve with occasional blackbuck sightings along with birds.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Safari Experience & Practical Info</h2>
+      <p>Most blackbuck safaris are sunrise or late afternoon drives. Expect:</p>
+      <ul>
+        <li>Jeep/jeep-like vehicle or park transport.</li>
+        <li>Guided interpretive talk by a forest guide.</li>
+        <li>Wildlife viewing, photography stops (subject to park rules).</li>
+      </ul>
+
+      <p><strong>What to bring:</strong> binoculars, camera with zoom lens, hat, water, sunscreen, light jacket (mornings can be chilly).</p>
+    </div>
+
+    <div class="section">
+      <h2>Rules & Safety</h2>
+      <ul>
+        <li>Always follow the guide's instructions.</li>
+        <li>Stay inside designated vehicles or areas unless supervised.</li>
+        <li>Do not feed or attempt to touch the animals.</li>
+        <li>Keep noise to a minimum and avoid flash photography if requested.</li>
+        <li>Carry and dispose of waste responsibly.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Booking & Contacts</h2>
+      <p>For government-run sanctuaries, booking is usually available through the state forest department website (search "<em>Velavadar booking</em>" or "<em>Rehekuri booking</em>"). Private grassland reserves will have direct booking pages or contact emails. If you want, I can add direct booking links for specific parks (Velavadar, Rehekuri).</p>
+    </div>
+
+    <div class="section">
+      <h2>Suggested Add-ons</h2>
+      <ul>
+        <li>Grassland nature walk (where permitted)</li>
+        <li>Birdwatching tour — grasslands support many resident and migratory birds</li>
+        <li>Visit nearby cultural or heritage sites (depends on park)</li>
+      </ul>
+    </div>
+
+    <div class="back-button-container">
+      <a href="home.html" class="btn btn-success">Back to Home</a>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+CREATE DATABASE IF NOT EXISTS `jungle_safaris`;
+USE `jungle_safaris`;
+
+CREATE TABLE IF NOT EXISTS `users` (
+    `id` INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    `username` VARCHAR(50) NOT NULL,
+    `email` VARCHAR(100) NOT NULL UNIQUE,
+    `password` VARCHAR(255) NOT NULL,
+    `role` VARCHAR(20) DEFAULT 'user',
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS `bookings` (
+    `id` INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    `park` VARCHAR(100) NOT NULL,
+    `name` VARCHAR(100) NOT NULL,
+    `phone` VARCHAR(20),
+    `email` VARCHAR(100),
+    `persons` INT(11),
+    `total` VARCHAR(50),
+    `date` VARCHAR(20),
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

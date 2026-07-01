@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vansda National Park - Jungle Safari & Nature</title>
+  <link rel='stylesheet' href='style.css'>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url("loginpanel.jpg") no-repeat center center / cover fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333; /* Default text color */
+    }
+    nav.navbar { background: rgba(255,255,255,0); }
+    .dropdown-menu { background-color: rgba(0,0,0,0.8); }
+    .dropdown-item { color: #f8f9fa; }
+    .dropdown-item:hover { background-color: rgba(255,255,255,0.12); color: #fff; }
+
+    .content-wrapper {
+      background-color: rgba(255,255,255,0.94);
+      margin: 22px auto;
+      padding: 22px;
+      border-radius: 10px;
+      max-width: 1100px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .infobox {
+      float: right;
+      width: 320px;
+      margin: 0 0 18px 20px;
+      padding: 12px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+    .infobox img { width: 100%; height: auto; border-radius: 6px; }
+
+    .section { margin-bottom: 22px; }
+    h1, h2 { color: #2e7d32; }
+    h2 { border-bottom: 2px solid #ddd; padding-bottom: 6px; margin-bottom: 12px; }
+    ul { padding-left: 20px; list-style-type: square; }
+
+    .clearfix::after { content: ""; display: table; clear: both; }
+
+    .btn-primary { background: #2e7d32; border-color: #2e7d32; }
+    @media (max-width: 768px) {
+      .infobox { float: none; width: 100%; margin: 0 0 18px 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand text-white" href="#">🌿Safari</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="homeDrop" role="button" data-toggle="dropdown">Home</a>
+          <div class="dropdown-menu" aria-labelledby="homeDrop">
+            <a class="dropdown-item" href="home.html">Main Page</a>
+            <a class="dropdown-item" href="#">About Us</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="booking.html">Booking</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="gallery.html">Gallery</a>
+        </li>
+      </ul>
+
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+      </form>
+
+      <ul class="navbar-nav ml-3">
+        <li class="nav-item"><a class="nav-link text-white" href="../backend/logout.php">Log Out</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container content-wrapper clearfix">
+    <h1 class="mt-3">Vansda National Park</h1>
+
+    <div class="infobox">
+      <img src="bus.jpg" alt="Vansda National Park">
+      <p><strong>Location:</strong> Vansda / Waghai region, Navsari district, Gujarat</p>
+      <p><strong>Nearest town:</strong> Waghai</p>
+      <p><strong>Area:</strong> ~24 sq km (protected area and surrounding forest)</p>
+      <p><strong>Park type:</strong> Tropical evergreen and semi-evergreen forest</p>
+      <p><strong>Best time:</strong> November to March</p>
+      <p><a href="#" target="_blank">Official Info / Contact</a></p>
+    </div>
+
+    <div class="section">
+      <h2>About Vansda</h2>
+      <p>Vansda National Park is a lush, compact forested park in southern Gujarat known for its dense vegetation, waterfalls, and easy trails. It offers a peaceful forest experience and decent wildlife viewing without the large crowds. Waghai serves as the main entry point for visitors.</p>
+    </div>
+
+    <img src="13.jpg" alt="Vansda forest" style="width:100%; max-width:900px; height:auto; margin-bottom:18px;">
+
+    <div class="section">
+      <h2>Wildlife & Birds</h2>
+      <p>The park supports a rich mix of mammals, reptiles, and bird species. Common sightings include:</p>
+      <ul>
+        <li>Leopards (occasionally)</li>
+        <li>Indian bison (gaur), sambar, and barking deer</li>
+        <li>Sloth bears (rare)</li>
+        <li>Civets, pangolins, and small mammals</li>
+        <li>Birds such as hornbills, barbets, and flycatchers</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Trails & Attractions</h2>
+      <ul>
+        <li>Guided nature trails and short hikes</li>
+        <li>Waterfalls and forest streams</li>
+        <li>Bamboo groves and evergreen patches</li>
+        <li>Waghai Botanical Garden and local tribal culture</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Safari & Visit Options</h2>
+      <p>Vansda is not a large safari park but offers guided walks and small-vehicle forest drives organized by the Forest Department. Birdwatching and photography tours are also available with local guides.</p>
+    </div>
+
+    <div class="section">
+      <h2>Visitor Guidelines</h2>
+      <ul>
+        <li>Follow park entry rules and carry valid ID.</li>
+        <li>Do not feed or disturb animals.</li>
+        <li>Use only marked trails and avoid littering.</li>
+        <li>Respect local villagers and forest staff.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Contact & Practical Info</h2>
+      <p><strong>Nearest town:</strong> Waghai (entry point)</p>
+      <p><strong>How to reach:</strong> Accessible by road from Navsari and Surat; local buses and taxis are available.</p>
+      <p><strong>Accommodation:</strong> Forest rest houses, guesthouses, and small resorts near Waghai.</p>
+    </div>
+
+    <div class="text-center">
+      <a href="home.html" class="btn btn-success">Back to Home</a>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
