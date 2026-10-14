@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -250,7 +250,7 @@
                                         </tr>
                                         <tr>
                                             <td>1 hour ago</td>
-                                            <td>New User Tirth Registered</td>
+                                            <td>New User Registered</td>
                                             <td><span class="badge bg-primary">New</span></td>
                                         </tr>
                                     </tbody>
@@ -363,7 +363,7 @@
                                     <input type="text" class="form-control" id="safariName" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="safariPrice" class="form-label">Price (₹)</label>
+                                    <label for="safariPrice" class="form-label">Price (â‚¹)</label>
                                     <input type="number" class="form-control" id="safariPrice" required>
                                 </div>
                                 <div class="mb-3">
@@ -403,18 +403,18 @@
 
         // 2. UPDATED BOOKINGS (From your list)
         let bookingsData = [
-            { id: 1, user_name: "Tirth Vishal kumar Gandhi", email: "nilamgandhi2550@gmail.com", phone: "8140396170", safari_name: "Corbett National Park", booking_date: "25/11/2025", price: "₹1000", seats: 1 },
-            { id: 2, user_name: "Tirth Vishal kumar Gandhi", email: "nilamgandhi2550@gmail.com", phone: "8140396170", safari_name: "Corbett National Park", booking_date: "25/11/2025", price: "₹1000", seats: 1 },
-            { id: 3, user_name: "Tirth Vishal kumar Gandhi", email: "nilamgandhi2550@gmail.com", phone: "8140396170", safari_name: "Corbett National Park", booking_date: "25/11/2025", price: "₹1000", seats: 1 },
-            { id: 4, user_name: "hem vekal kumar shah", email: "hem123@gmail.com", phone: "1236547809", safari_name: "Corbett National Park", booking_date: "25/11/2025", price: "₹4000", seats: 4 },
-            { id: 5, user_name: "ved raj shah", email: "vved123@gmail.com", phone: "1236547809", safari_name: "Ranthambore National Park", booking_date: "25/11/2025", price: "₹3000", seats: 3 }
+            { id: 1, user_name: "Guest User", email: "user@example.com", phone: "9876543210", safari_name: "Corbett National Park", booking_date: "25/11/2025", price: "â‚¹1000", seats: 1 },
+            { id: 2, user_name: "Guest User", email: "user@example.com", phone: "9876543210", safari_name: "Corbett National Park", booking_date: "25/11/2025", price: "â‚¹1000", seats: 1 },
+            { id: 3, user_name: "Guest User", email: "user@example.com", phone: "9876543210", safari_name: "Corbett National Park", booking_date: "25/11/2025", price: "â‚¹1000", seats: 1 },
+            { id: 4, user_name: "Alex Smith", email: "alex@example.com", phone: "1236547809", safari_name: "Corbett National Park", booking_date: "25/11/2025", price: "â‚¹4000", seats: 4 },
+            { id: 5, user_name: "David Miller", email: "david@example.com", phone: "1236547809", safari_name: "Ranthambore National Park", booking_date: "25/11/2025", price: "â‚¹3000", seats: 3 }
         ];
 
         // 3. GENERATED USERS (Extracted unique users from your list)
         let usersData = [
-            { id: 1001, name: "Tirth Vishal kumar Gandhi", email: "nilamgandhi2550@gmail.com", phone: "8140396170", role: "User" },
-            { id: 1002, name: "hem vekal kumar shah", email: "hem123@gmail.com", phone: "1236547809", role: "User" },
-            { id: 1003, name: "ved raj shah", email: "vved123@gmail.com", phone: "1236547809", role: "User" }
+            { id: 1001, name: "Guest User", email: "user@example.com", phone: "9876543210", role: "User" },
+            { id: 1002, name: "Alex Smith", email: "alex@example.com", phone: "1236547809", role: "User" },
+            { id: 1003, name: "David Miller", email: "david@example.com", phone: "1236547809", role: "User" }
         ];
 
         let stats = {
@@ -507,7 +507,7 @@
                             <td><img src="${safari.image}" alt="${safari.name}" width="60" height="60"></td>
                             <td><strong>${safari.name}</strong></td>
                             <td style="max-width: 300px;">${safari.description}</td>
-                            <td>₹${safari.price}</td>
+                            <td>â‚¹${safari.price}</td>
                             <td>
                                 <button class="btn btn-danger btn-sm" onclick="deleteSafari(${safari.id})"><i class="fas fa-trash"></i></button>
                             </td>
